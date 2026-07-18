@@ -1,0 +1,96 @@
+<!-- FOOTER -->
+<footer class="bg-inverse-surface text-inverse-on-surface py-12 px-margin-mobile md:px-margin-desktop mt-auto">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+      <div class="md:col-span-2">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Haisen Official logo" class="h-12 w-auto mb-4" />
+        <p class="font-body-md text-body-md text-inverse-on-surface/60 max-w-sm">Penyedia layanan digital profesional untuk kebutuhan bisnis modern dan penyelenggaraan event terintegrasi.</p>
+      </div>
+      <div>
+        <h4 class="font-headline-md text-headline-md text-inverse-on-surface mb-4">Layanan & Produk</h4>
+        <ul class="space-y-2 text-inverse-on-surface/60">
+          <li><a href="{{ url_for('produk') }}#software" class="font-body-md hover:text-primary-container transition-colors">Pengembangan Software</a></li>
+          <li><a href="{{ url_for('produk') }}#creative" class="font-body-md hover:text-primary-container transition-colors">Foto & Videografi</a></li>
+          <li><a href="{{ url_for('produk') }}#event" class="font-body-md hover:text-primary-container transition-colors">Event Digital Solution</a></li>
+          <li><a href="{{ url_for('produk') }}#bundling" class="font-body-md hover:text-primary-container transition-colors">Paket Bundling Event</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-headline-md text-headline-md text-inverse-on-surface mb-4">Informasi Legal</h4>
+        <ul class="space-y-2 text-inverse-on-surface/60">
+          <li><a href="{{ url_for('logo') }}" class="font-body-md hover:text-primary-container transition-colors">Brand Logo</a></li>
+          <li><a href="{{ url_for('privacy_policy') }}" class="font-body-md hover:text-primary-container transition-colors">Kebijakan Privasi</a></li>
+          <li><a href="{{ url_for('terms_and_conditions') }}" class="font-body-md hover:text-primary-container transition-colors">Syarat & Ketentuan</a></li>
+          <li><a href="{{ url_for('contact') }}" class="font-body-md hover:text-primary-container transition-colors">Hubungi Kami</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-inverse-on-surface/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="font-label-bold text-label-sm text-inverse-on-surface/40 uppercase tracking-widest">© 2026 Haisen Official. All rights reserved.</p>
+      <p class="font-label-sm text-inverse-on-surface/40 flex items-center gap-1">Made with <span class="material-symbols-outlined text-primary-container text-[16px]">favorite</span> by Haisen Team</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const topNav = document.getElementById('top-nav');
+    const navContainer = document.getElementById('nav-container');
+
+    if (topNav && navContainer) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 30) {
+          topNav.classList.remove('top-0', 'w-full', 'max-w-full', 'rounded-none', 'border-transparent', 'border-b', 'bg-surface/80');
+          topNav.classList.add('top-4', 'w-[95%]', 'max-w-4xl', 'rounded-[2rem]', 'border', 'border-outline-variant', 'shadow-[0_8px_32px_rgba(0,0,0,0.15)]', 'bg-surface/90');
+          navContainer.classList.remove('h-20', 'px-margin-mobile', 'md:px-margin-desktop');
+          navContainer.classList.add('h-16', 'px-6', 'md:px-8');
+        } else {
+          topNav.classList.add('top-0', 'w-full', 'max-w-full', 'rounded-none', 'border-transparent', 'border-b', 'bg-surface/80');
+          topNav.classList.remove('top-4', 'w-[95%]', 'max-w-4xl', 'rounded-[2rem]', 'border', 'border-outline-variant', 'shadow-[0_8px_32px_rgba(0,0,0,0.15)]', 'bg-surface/90');
+          navContainer.classList.add('h-20', 'px-margin-mobile', 'md:px-margin-desktop');
+          navContainer.classList.remove('h-16', 'px-6', 'md:px-8');
+        }
+      });
+    }
+
+    const btnOpen = document.getElementById('mobile-menu-open');
+    const btnClose = document.getElementById('mobile-menu-close');
+    const popup = document.getElementById('mobile-popup');
+    const mobileLinks = document.querySelectorAll('.mobile-link-anim');
+
+    if (btnOpen && btnClose && popup) {
+      btnOpen.addEventListener('click', () => {
+        popup.classList.remove('opacity-0', 'pointer-events-none', 'scale-95');
+        popup.classList.add('opacity-100', 'pointer-events-auto', 'scale-100');
+        document.body.classList.add('menu-open'); 
+        mobileLinks.forEach((link, index) => setTimeout(() => link.classList.add('show'), 100 + (index * 80)));
+      });
+
+      const closeMenu = () => {
+        popup.classList.remove('opacity-100', 'pointer-events-auto', 'scale-100');
+        popup.classList.add('opacity-0', 'pointer-events-none', 'scale-95');
+        document.body.classList.remove('menu-open'); 
+        mobileLinks.forEach(link => link.classList.remove('show'));
+      };
+
+      btnClose.addEventListener('click', closeMenu);
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && popup.classList.contains('opacity-100')) closeMenu();
+      });
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const anim = entry.target.getAttribute('data-animate');
+          if (anim) {
+            entry.target.classList.add('animate-' + anim);
+            observer.unobserve(entry.target);
+          }
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+  });
+</script>

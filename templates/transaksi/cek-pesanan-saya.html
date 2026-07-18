@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="py-16 px-margin-mobile md:px-margin-desktop bg-surface min-h-[85vh]">
+  <div class="max-w-3xl mx-auto text-center">
+    
+    <!-- HEADER -->
+    <div class="inline-block bg-primary-container/10 p-4 rounded-full mb-6">
+      <span class="material-symbols-outlined text-primary text-[40px]">manage_search</span>
+    </div>
+    <h1 class="font-display-lg-mobile text-3xl md:text-4xl uppercase font-black text-on-surface mb-4">Cek Status Pesanan</h1>
+    <p class="text-on-surface-variant mb-8 text-sm">
+      Masukkan Nomor Invoice (cth: <span class="font-mono font-bold text-xs bg-surface-container px-2 py-0.5 rounded text-primary">INV-HSN-XXXX</span>) untuk memantau detail tagihan, status pembayaran, dan progres pengembangan proyek Anda.
+    </p>
+
+    <!-- SEARCH FORM -->
+    <form action="{{ url_for('cek_pesanan') }}" method="GET" class="bg-surface-container-low p-6 md:p-8 rounded-2xl border border-outline-variant shadow-lg max-w-xl mx-auto mb-12">
+      <div class="flex flex-col sm:flex-row gap-4">
+        <input type="text" name="query" value="{{ invoice or '' }}" required placeholder="Masukkan Nomor Invoice..." class="flex-1 bg-surface border border-outline rounded-full px-6 py-3 text-sm focus:outline-none focus:border-primary font-mono" />
+        <button type="submit" class="bg-primary text-primary-container font-label-bold uppercase px-8 py-3 rounded-full hover:scale-105 transition-transform shadow-md flex items-center justify-center gap-2 text-sm shrink-0">
+          <span class="material-symbols-outlined text-[20px]">search</span> Lacak
+        </button>
+      </div>
+    </form>
+
+    <!-- TAMPILAN JIKA TERJADI ERROR (KODE INVOICE SALAH) -->
+    {% if error %}
+    <div class="bg-error-container text-on-error-container p-4 rounded-xl text-sm font-label-bold mb-12 max-w-xl mx-auto flex items-center justify-center gap-2 animate-fade-in-up">
+        <span class="material-symbols-outlined">error</span> {{ error }}
+    </div>
+    {% endif %}
+
+    <!-- TAMPILAN JIKA PESANAN DITEMUKAN -->
+    {% if pesanan %}
+    <div class="bg-surface-container-low rounded-2xl p-8 border border-outline-variant text-left shadow-md animate-fade-in-up">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b pb-4 mb-6 gap-4">
+        <div>
+          <span class="text-xs font-label-bold text-on-surface-variant uppercase">Nomor Invoice</span>
+          <h3 class="font-mono font-bold text-xl text-on-surface">{{ pesanan.order_id }}</h3>
+          <p class="text-xs text-on-surface-variant mt-1">Dibuat: {{ pesanan.waktu }}</p>
+        </div>
+        
+        <!-- STATUS BADGE DINAMIS -->
+        {% if pesanan.status in ['capture', 'settlement'] %}
+            <span class="bg-[#E8F5E9] text-[#2E7D32] border border-[#A5D6A7] px-4 py-2 rounded-full text-xs font-label-bold uppercase flex items-center gap-2 shadow-sm">
+            <span class="material-symbols-outlined text-[16px]">verified</span> Pembayaran Lunas
+            </span>
+        {% elif pesanan.status == 'pending' %}
+            <span class="bg-[#FFF8E1] text-[#F57F17] border border-[#FFE082] px-4 py-2 rounded-full text-xs font-label-bold uppercase flex items-center gap-2 shadow-sm">
+            <span class="material-symbols-outlined text-[16px]">schedule</span> Menunggu Pembayaran
+            </span>
+        {% else %}
+            <span class="bg-[#FFEBEE] text-[#C62828] border border-[#FFCDD2] px-4 py-2 rounded-full text-xs font-label-bold uppercase flex items-center gap-2 shadow-sm">
+            <span class="material-symbols-outlined text-[16px]">cancel</span> Dibatalkan / Kadaluarsa
+            </span>
+        {% endif %}
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div>
+          <p class="text-xs font-label-bold text-on-surface-variant uppercase mb-1">Total Tagihan</p>
+          <p class="font-black text-2xl text-primary">{{ pesanan.gross_amount_format }}</p>
+        </div>
+        <div>
+          <p class="text-xs font-label-bold text-on-surface-variant uppercase mb-1">Metode Pembayaran</p>
+          <p class="font-bold text-base text-on-surface flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-[18px]">account_balance_wallet</span> 
+            {{ pesanan.payment_method }}
+          </p>
+        </div>
+      </div>
+
+      <!-- PROGRESS BAR DINAMIS BERDASARKAN STATUS PEMBAYARAN -->
+      <div class="space-y-2 mb-8 bg-surface p-6 rounded-xl border border-outline">
+        <div class="flex justify-between text-xs font-label-bold">
+            <span class="text-on-surface">Kemajuan Proyek (Progress)</span>
+            {% if pesanan.status in ['capture', 'settlement'] %}
+                <span class="text-primary">50%</span>
+            {% elif pesanan.status == 'pending' %}
+                <span class="text-[#F57F17]">10%</span>
+            {% else %}
+                <span class="text-[#C62828]">0%</span>
+            {% endif %}
+        </div>
+        
+        <div class="w-full bg-background h-3 rounded-full overflow-hidden border border-outline">
+            {% if pesanan.status in ['capture', 'settlement'] %}
+                <div class="bg-primary h-full rounded-full transition-all duration-1000" style="width: 50%;"></div>
+            {% elif pesanan.status == 'pending' %}
+                <div class="bg-secondary-container h-full rounded-full transition-all duration-1000" style="width: 10%;"></div>
+            {% else %}
+                <div class="bg-error h-full rounded-full transition-all duration-1000" style="width: 0%;"></div>
+            {% endif %}
+        </div>
+        
+        <div class="flex justify-between text-[11px] text-on-surface-variant pt-2">
+            <span class="{% if pesanan.status != 'pending' %}font-bold text-on-surface{% endif %}">1. Verifikasi Pembayaran</span>
+            <span class="{% if pesanan.status in ['capture', 'settlement'] %}font-bold text-primary{% endif %}">2. Proses Pengerjaan</span>
+            <span>3. Penyerahan Final</span>
+        </div>
+      </div>
+
+      <!-- TOMBOL AKSI -->
+      <div class="flex flex-wrap gap-4 pt-4 justify-end">
+        <a href="https://wa.me/6285166662385?text=Halo%20Haisen,%20saya%20ingin%20menanyakan%20proyek%20saya%20dengan%20Invoice:%20{{ pesanan.order_id }}" target="_blank" class="bg-primary text-primary-container font-label-bold text-xs uppercase px-6 py-3 rounded-full hover:scale-105 transition-transform shadow-md flex items-center justify-center gap-2 w-full sm:w-auto">
+          <span class="material-symbols-outlined text-[18px]">support_agent</span> Hubungi Project Manager
+        </a>
+      </div>
+    </div>
+    {% endif %}
+
+  </div>
+</section>
+{% endblock %}

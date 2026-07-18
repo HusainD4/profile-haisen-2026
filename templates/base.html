@@ -1,0 +1,114 @@
+<!doctype html>
+<html class="scroll-smooth light" lang="id">
+    <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>HAISEN OFFICIAL - Solusi Digital Profesional</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;0,800;0,900;1,900&amp;family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "background": "#F5F5F0", 
+              "surface": "#FFFFFF", 
+              "on-surface": "#111111", 
+              "on-surface-variant": "#555555", 
+              "primary": "#111111", 
+              "primary-container": "#FFD600", 
+              "on-primary": "#FFD600", 
+              "on-primary-container": "#111111", 
+              "primary-fixed": "#FFD600", 
+              "primary-fixed-dim": "#FFAB00", 
+              "on-primary-fixed": "#111111", 
+              "on-primary-fixed-variant": "#333333", 
+              "secondary": "#555555", 
+              "secondary-container": "#FFAB00", 
+              "on-secondary-container": "#111111", 
+              "on-secondary": "#FFFFFF", 
+              "secondary-fixed": "#FFE082", 
+              "secondary-fixed-dim": "#FFC107", 
+              "on-secondary-fixed": "#333333", 
+              "on-secondary-fixed-variant": "#444444", 
+              "tertiary": "#F9A825", 
+              "tertiary-container": "#FFF8E1", 
+              "on-tertiary-container": "#333333", 
+              "on-tertiary": "#111111", 
+              "tertiary-fixed": "#FFF59D", 
+              "tertiary-fixed-dim": "#FFEE58", 
+              "on-tertiary-fixed": "#333333", 
+              "on-tertiary-fixed-variant": "#444444", 
+              "inverse-surface": "#121212", 
+              "inverse-on-surface": "#F5F5F0", 
+              "surface-container-lowest": "#FFFFFF", 
+              "surface-container-low": "#F9F9F4", 
+              "surface-container": "#F0F0EB", 
+              "surface-container-high": "#EAEAE5", 
+              "surface-container-highest": "#E0E0DB", 
+              "surface-dim": "#DDDDD8", 
+              "surface-bright": "#F5F5F0", 
+              "surface-tint": "#FFD600", 
+              "outline": "#888888", 
+              "outline-variant": "#D0D0CB", 
+              "error": "#BA1A1A", 
+              "error-container": "#FFDAD6", 
+              "on-error": "#FFFFFF", 
+              "on-error-container": "#93000A"
+            },
+            borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px", },
+            spacing: { unit: "8px", "section-gap": "120px", "margin-desktop": "64px", "margin-mobile": "16px", gutter: "24px", },
+            fontFamily: { "headline-md": ["Montserrat"], "body-md": ["Inter"], "display-lg-mobile": ["Montserrat"], "body-lg": ["Inter"], "display-lg": ["Montserrat"], "label-bold": ["Inter"], "headline-lg": ["Montserrat"], "label-sm": ["Inter"], },
+            fontSize: { "headline-md": ["24px", { lineHeight: "32px", fontWeight: "700" }], "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }], "display-lg-mobile": ["40px", { lineHeight: "44px", letterSpacing: "-0.01em", fontWeight: "800", }], "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }], "display-lg": ["64px", { lineHeight: "72px", letterSpacing: "-0.02em", fontWeight: "800", }], "label-bold": ["14px", { lineHeight: "20px", fontWeight: "700" }], "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "700" }], "label-sm": ["12px", { lineHeight: "16px", fontWeight: "500" }], },
+            keyframes: {
+              fadeInUp: { '0%': { opacity: '0', transform: 'translateY(40px)' }, '100%': { opacity: '1', transform: 'translateY(0)' }, },
+              fadeInLeft: { '0%': { opacity: '0', transform: 'translateX(-40px)' }, '100%': { opacity: '1', transform: 'translateX(0)' }, },
+              fadeInRight: { '0%': { opacity: '0', transform: 'translateX(40px)' }, '100%': { opacity: '1', transform: 'translateX(0)' }, },
+            },
+            animation: {
+              'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+              'fade-in-left': 'fadeInLeft 0.8s ease-out forwards',
+              'fade-in-right': 'fadeInRight 0.8s ease-out forwards',
+            }
+          },
+        },
+      };
+    </script>
+    <style>
+      .nav-link-hover { position: relative; display: inline-block; }
+      .nav-link-hover::after {
+        content: ''; position: absolute; width: 100%; transform: scaleX(0); height: 2px;
+        bottom: -4px; left: 0; background-color: #FFD600; transform-origin: bottom right;
+        transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+      }
+      .nav-link-hover:hover::after, .nav-link-hover.active::after { transform: scaleX(1); transform-origin: bottom left; }
+
+      .mobile-link-anim { opacity: 0; transform: translateY(20px); transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+      .mobile-link-anim.show { opacity: 1; transform: translateY(0); }
+      body.menu-open { overflow: hidden; }
+      .apple-transition { transition-property: all; transition-timing-function: cubic-bezier(0.25, 1, 0.5, 1); transition-duration: 500ms; }
+
+      .slant-clip { clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%); }
+      .slant-clip-reverse { clip-path: polygon(0 15%, 100% 0, 100% 100%, 0% 100%); }
+      .glow-hover:hover { box-shadow: 0 0 32px rgba(255, 214, 0, 0.25); }
+      .delay-200 { animation-delay: 200ms; }
+      .delay-400 { animation-delay: 400ms; }
+      .delay-600 { animation-delay: 600ms; }
+      .delay-800 { animation-delay: 800ms; }
+      .delay-1000 { animation-delay: 1000ms; }
+    </style>
+  </head>
+  <body class="bg-background text-on-surface font-body-md antialiased overflow-x-hidden flex flex-col min-h-screen">
+    
+    {% include 'utils/navbar.html' %}
+    
+    <main class="flex-grow pt-20">
+      {% block content %}{% endblock %}
+    </main>
+
+    {% include 'utils/footer.html' %}
+
+  </body>
+</html>

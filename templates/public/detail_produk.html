@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="py-16 px-margin-mobile md:px-margin-desktop bg-surface">
+  <div class="max-w-5xl mx-auto">
+    <a href="{{ url_for('produk') }}" class="inline-flex items-center gap-2 text-on-surface-variant hover:text-primary font-label-bold mb-8 transition-colors">
+      <span class="material-symbols-outlined">arrow_back</span> Kembali ke Katalog Produk
+    </a>
+
+    <!-- PRODUCT HEADER DINAMIS -->
+    <div class="bg-surface-container-low rounded-2xl p-8 md:p-12 mb-12 border border-outline-variant grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+      <div class="md:col-span-8">
+        <span class="inline-block bg-primary-container text-on-primary-container px-3 py-1 rounded text-xs font-label-bold uppercase mb-4">{{ produk.kategori }}</span>
+        <h1 class="font-display-lg-mobile text-3xl md:text-4xl uppercase font-black text-on-surface mb-4">{{ produk.nama }}</h1>
+        <p class="font-body-lg text-on-surface-variant mb-6 text-sm md:text-base">
+          {{ produk.deskripsi }}
+        </p>
+        <div class="flex flex-wrap items-center gap-4 font-bold text-2xl text-primary">
+          <span>{{ produk.harga_display }}</span>
+          <span class="text-xs font-normal text-on-surface-variant bg-surface px-2 py-1 rounded border">{{ produk.harga_note }}</span>
+        </div>
+      </div>
+      <div class="md:col-span-4 flex flex-col gap-4">
+        <!-- Mengirim ID produk ke halaman checkout agar otomatis terpilih -->
+        <a href="{{ url_for('checkout', id=produk_id) }}" class="w-full text-center bg-primary text-primary-container font-label-bold text-sm uppercase py-4 rounded-full hover:scale-105 transition-transform shadow-lg flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined">shopping_cart_checkout</span> Pesan & Bayar Online
+        </a>
+        <!-- Teks pesan WhatsApp otomatis berubah sesuai nama produk -->
+        <a href="https://wa.me/6285166662385?text=Halo%20Haisen,%20saya%20ingin%20konsultasi%20layanan%20{{ produk.nama }}" target="_blank" class="w-full text-center bg-surface text-on-surface font-label-bold text-sm uppercase py-4 rounded-full hover:bg-surface-dim transition-all border border-outline-variant flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined text-primary">chat</span> Konsultasi WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- SPECIFICATIONS & WORKFLOW DINAMIS -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+      <!-- DAFTAR FITUR (LOOPING) -->
+      <div>
+        <h2 class="font-bold text-2xl uppercase mb-6 flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary-container">verified</span> Spesifikasi & Fitur Lengkap
+        </h2>
+        <ul class="space-y-4 text-on-surface-variant text-sm">
+          {% for fitur in produk.fitur %}
+          <li class="flex items-start gap-3">
+            <span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check_circle</span>
+            <div><strong class="text-on-surface">{{ fitur.judul }}:</strong> {{ fitur.desc }}</div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- ALUR KERJA PEMESANAN (LOOPING) -->
+      <div class="bg-surface-container-low p-8 rounded-2xl border border-outline-variant">
+        <h2 class="font-bold text-2xl uppercase mb-6">Alur Kerja Pemesanan</h2>
+        <div class="space-y-6 text-sm">
+          {% for langkah in produk.alur %}
+          <div class="flex gap-4">
+            <div class="bg-primary text-primary-container w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">{{ langkah.step }}</div>
+            <div>
+              <h4 class="font-bold text-on-surface">{{ langkah.judul }}</h4>
+              <p class="text-on-surface-variant text-xs">{{ langkah.desc }}</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

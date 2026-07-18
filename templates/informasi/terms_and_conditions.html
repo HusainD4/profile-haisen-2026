@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="min-h-screen py-16 px-margin-mobile md:px-margin-desktop bg-surface">
+  <div class="max-w-4xl mx-auto">
+    <a href="{{ url_for('home') }}" class="inline-flex items-center gap-2 text-on-surface-variant hover:text-primary font-label-bold mb-12 transition-colors">
+      <span class="material-symbols-outlined">arrow_back</span> Kembali ke Beranda
+    </a>
+    
+    <h1 class="font-display-lg-mobile md:font-display-lg text-4xl md:text-6xl uppercase text-on-surface mb-4 font-extrabold">Syarat & Ketentuan</h1>
+    <p class="font-body-lg text-on-surface-variant mb-12">Terakhir diperbarui: Juli 2026</p>
+    
+    <div class="prose max-w-none space-y-8 text-on-surface-variant font-body-md leading-relaxed">
+      <div class="bg-surface-container-low p-6 rounded-xl border-l-4 border-primary-container">
+        <p class="text-on-surface">Dengan mengakses atau menggunakan layanan yang disediakan oleh Haisen Official, Anda menyetujui untuk terikat oleh Syarat dan Ketentuan berikut.</p>
+      </div>
+
+      <div>
+        <h2 class="font-bold text-xl text-on-surface mb-4 flex items-center gap-2"><span class="text-primary font-bold">01.</span> Ketentuan Umum</h2>
+        <p class="text-sm">"Layanan" merujuk pada seluruh jasa rekayasa perangkat lunak (*software development*), dokumentasi kreatif foto & videografi, serta implementasi *Event Digital Solution* (SaaS/Hardware) yang disediakan oleh Haisen Official.</p>
+      </div>
+
+      <div>
+        <h2 class="font-bold text-xl text-on-surface mb-4 flex items-center gap-2"><span class="text-primary font-bold">02.</span> Pembayaran & Transaksi Digital</h2>
+        <ul class="list-disc pl-6 space-y-2 text-sm">
+          <li>Pembayaran produk digital, tiket event, dan layanan foto/video dapat dilakukan secara langsung melalui website resmi yang terintegrasi dengan *payment gateway*.</li>
+          <li>Untuk pengembangan software kustom proyek jangka panjang, pembayaran dilakukan berdasarkan kesepakatan (*Down Payment* & termin) pada dokumen proposal tertulis.</li>
+          <li>*Refund* hanya dapat diproses sesuai dengan klausul perjanjian kontrak yang telah disepakati bersama.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="font-bold text-xl text-on-surface mb-4 flex items-center gap-2"><span class="text-primary font-bold">03.</span> Hak Kekayaan Intelektual (HAKI)</h2>
+        <p class="text-sm">Seluruh hak cipta, arsitektur sistem, kode program (*source code*), dan aset desain digital yang dibangun oleh Haisen Official tetap menjadi milik kami hingga proses pelunasan administrasi selesai sepenuhnya.</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

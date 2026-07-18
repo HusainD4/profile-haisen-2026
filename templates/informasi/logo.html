@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="min-h-screen py-16 px-margin-mobile md:px-margin-desktop bg-surface">
+  <div class="max-w-4xl mx-auto">
+    <a href="{{ url_for('home') }}" class="inline-flex items-center gap-2 text-on-surface-variant hover:text-primary font-label-bold mb-12 transition-colors">
+      <span class="material-symbols-outlined">arrow_back</span> Kembali ke Beranda
+    </a>
+    
+    <h1 class="font-display-lg-mobile md:font-display-lg text-4xl md:text-6xl uppercase text-on-surface mb-4 font-extrabold">Brand Logo</h1>
+    <p class="font-body-lg text-on-surface-variant mb-16 max-w-2xl">
+      Identitas visual resmi Haisen Official. Penggunaan logo harus mengikuti pedoman ini untuk menjaga konsistensi dan profesionalisme brand.
+    </p>
+
+    <!-- PRIMARY LOGO -->
+    <div class="bg-surface-container-low rounded-2xl p-12 md:p-16 flex flex-col items-center justify-center mb-16 border border-outline-variant glow-hover">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Haisen Official logo" class="w-48 h-48 md:w-64 md:h-64 object-contain mb-8 drop-shadow-2xl" />
+      <h2 class="font-bold text-2xl text-on-surface mb-2">Logo Utama (Primary)</h2>
+      <p class="text-on-surface-variant text-center max-w-md text-sm">Digunakan untuk latar belakang terang (Light Mode) dan sebagai identitas utama dokumen resmi.</p>
+    </div>
+
+    <!-- NEGATIVE & WORDMARK -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      <div class="bg-inverse-surface rounded-2xl p-12 flex flex-col items-center justify-center border border-inverse-on-surface/10">
+        <img src="{{ url_for('static', filename='images/logoPutih.png') }}" alt="Haisen Official logo versi negatif" class="w-32 h-32 mb-6 object-contain" />
+        <h3 class="font-bold text-lg text-inverse-on-surface mb-2">Versi Negatif</h3>
+        <p class="text-inverse-on-surface/60 text-center text-xs">Digunakan pada antarmuka latar belakang gelap (Dark Mode) atau media cetak hitam.</p>
+      </div>
+      <div class="bg-surface-container-low rounded-2xl p-12 flex flex-col items-center justify-center border border-outline-variant">
+        <div class="font-display-lg text-[80px] md:text-[100px] font-black italic tracking-tighter text-primary leading-none mb-6">HAISEN</div>
+        <h3 class="font-bold text-lg text-on-surface mb-2">Logotype (Wordmark)</h3>
+        <p class="text-on-surface-variant text-center text-xs">Digunakan untuk header website, watermark, dan pengidentifikasi teks cepat.</p>
+      </div>
+    </div>
+
+    <!-- GUIDELINES -->
+    <div class="bg-surface border-l-4 border-primary-container p-8 rounded-r-xl shadow-md">
+      <h3 class="font-bold text-lg text-on-surface mb-4 flex items-center gap-2">
+        <span class="material-symbols-outlined text-primary-container">info</span> Pedoman Penggunaan
+      </h3>
+      <ul class="space-y-3 text-on-surface-variant text-sm">
+        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span> Jangan mengubah proporsi, meregangkan, atau mendistorsi rasio aspek logo.</li>
+        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span> Berikan ruang kosong (*clearspace*) minimal setinggi huruf 'H' di sekeliling logo.</li>
+        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span> Hindari penempatan logo pada latar belakang yang terlalu ramai atau bertabrakan warna.</li>
+        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-error text-[20px] mt-0.5">close</span> Dilarang menambahkan efek bayangan palsu, *outline* warna-warni, atau gradasi yang tidak resmi.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+{% endblock %}

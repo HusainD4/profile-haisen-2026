@@ -1,0 +1,48 @@
+{% extends "admin/base_admin.html" %}
+{% block page_title %}Laporan Transaksi Midtrans{% endblock %}
+
+{% block content %}
+<div class="bg-surface-card rounded-2xl shadow-sm border border-outline overflow-hidden">
+    <div class="p-6 border-b border-outline flex justify-between items-center bg-gray-50">
+        <h3 class="font-bold text-lg">Histori Pembayaran Gateway</h3>
+        <button class="border border-outline bg-white px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 hover:bg-gray-50 transition-colors">
+            <span class="material-symbols-outlined text-[18px]">download</span> Export Excel
+        </button>
+    </div>
+    
+    <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm whitespace-nowrap">
+            <thead class="uppercase tracking-wider border-b border-outline text-gray-500 font-bold bg-white">
+                <tr>
+                    <th scope="col" class="px-6 py-4">Nomor Invoice</th>
+                    <th scope="col" class="px-6 py-4">Metode Bayar</th>
+                    <th scope="col" class="px-6 py-4 text-right">Nominal (Rp)</th>
+                    <th scope="col" class="px-6 py-4">Status Gateway</th>
+                    <th scope="col" class="px-6 py-4">Tanggal Pembayaran</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-outline">
+                {% for trx in transaksi %}
+                <tr class="hover:bg-gray-50 transition-colors">
+                    <td class="px-6 py-4 font-mono font-bold">{{ trx.id }}</td>
+                    <td class="px-6 py-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-gray-400 text-[18px]">account_balance_wallet</span> {{ trx.metode }}
+                    </td>
+                    <td class="px-6 py-4 font-black text-right">{{ trx.jumlah }}</td>
+                    <td class="px-6 py-4">
+                        {% if trx.status_bayar == 'Settlement' %}
+                            <span class="flex items-center gap-1 text-green-600 font-bold"><span class="material-symbols-outlined text-[16px]">verified</span> Lunas</span>
+                        {% elif trx.status_bayar == 'Pending' %}
+                            <span class="flex items-center gap-1 text-orange-500 font-bold"><span class="material-symbols-outlined text-[16px]">schedule</span> Menunggu</span>
+                        {% else %}
+                            <span class="flex items-center gap-1 text-red-600 font-bold"><span class="material-symbols-outlined text-[16px]">cancel</span> Gagal/Batal</span>
+                        {% endif %}
+                    </td>
+                    <td class="px-6 py-4 text-gray-500">{{ trx.tanggal }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

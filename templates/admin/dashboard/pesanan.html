@@ -1,0 +1,51 @@
+{% extends "admin/base_admin.html" %}
+{% block page_title %}Manajemen Pesanan Proyek{% endblock %}
+
+{% block content %}
+<div class="bg-surface-card rounded-2xl shadow-sm border border-outline overflow-hidden">
+    <div class="p-6 border-b border-outline flex justify-between items-center bg-gray-50">
+        <h3 class="font-bold text-lg">Daftar Proyek & Layanan</h3>
+        <div class="flex gap-2">
+            <input type="text" placeholder="Cari Invoice/Klien..." class="px-4 py-2 border border-outline rounded-lg text-sm focus:outline-none focus:border-primary" />
+            <button class="bg-primary text-primary-container px-4 py-2 rounded-lg text-sm font-bold shadow-sm">Cari</button>
+        </div>
+    </div>
+    
+    <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm whitespace-nowrap">
+            <thead class="uppercase tracking-wider border-b border-outline text-gray-500 font-bold bg-white">
+                <tr>
+                    <th scope="col" class="px-6 py-4">Nomor Invoice</th>
+                    <th scope="col" class="px-6 py-4">Nama Klien / Instansi</th>
+                    <th scope="col" class="px-6 py-4">Layanan Dipesan</th>
+                    <th scope="col" class="px-6 py-4">Tanggal Order</th>
+                    <th scope="col" class="px-6 py-4">Status Proyek</th>
+                    <th scope="col" class="px-6 py-4 text-center">Aksi</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-outline">
+                {% for p in pesanan %}
+                <tr class="hover:bg-gray-50 transition-colors">
+                    <td class="px-6 py-4 font-mono font-bold">{{ p.id }}</td>
+                    <td class="px-6 py-4 font-bold">{{ p.nama }}</td>
+                    <td class="px-6 py-4">{{ p.layanan }}</td>
+                    <td class="px-6 py-4 text-gray-500">{{ p.tanggal }}</td>
+                    <td class="px-6 py-4">
+                        {% if p.status == 'Selesai' %}
+                            <span class="px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-bold">{{ p.status }}</span>
+                        {% elif p.status == 'In Progress' %}
+                            <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-bold">{{ p.status }}</span>
+                        {% else %}
+                            <span class="px-3 py-1 rounded-full bg-orange-100 text-orange-700 text-xs font-bold">{{ p.status }}</span>
+                        {% endif %}
+                    </td>
+                    <td class="px-6 py-4 text-center">
+                        <button class="text-blue-600 hover:bg-blue-50 p-2 rounded-lg transition-colors" title="Edit Pesanan"><span class="material-symbols-outlined text-[20px]">edit_square</span></button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

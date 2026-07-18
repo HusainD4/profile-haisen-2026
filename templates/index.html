@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- HERO SECTION -->
+<section id="home" class="relative min-h-[850px] flex items-center slant-clip bg-inverse-surface overflow-hidden group">
+  <div class="absolute inset-0 z-0 overflow-hidden">
+    <div class="absolute inset-0 bg-primary-container/10 mix-blend-multiply z-10"></div>
+    <div style="position: relative; width: 100%; height: 100%;">
+      <img alt="Digital technology background" src="{{ url_for('static', filename='images/banner.png') }}" class="w-full h-full object-cover object-center transform transition-transform duration-[10000ms] ease-out group-hover:scale-110" style="display: block; filter: contrast(1.2) grayscale(20%);" />
+      <div style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 30%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0) 80%); pointer-events: none;"></div>
+    </div>
+  </div>
+  
+  <div class="relative z-20 w-full px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-12 gap-gutter">
+    <div class="md:col-span-8 lg:col-span-7">
+      <span data-animate="fade-in-up" class="opacity-0 inline-block bg-primary-container text-on-primary-container px-4 py-1 rounded-sm font-label-bold text-xs uppercase mb-6 tracking-wider shadow-lg">
+        Solusi Digital Profesional & Event Tech
+      </span>
+      <h1 data-animate="fade-in-up" class="opacity-0 delay-200 font-display-lg-mobile md:font-display-lg text-4xl md:text-6xl text-inverse-on-surface uppercase mb-6 drop-shadow-xl font-extrabold leading-tight">
+        HAISEN<br /><span class="text-primary-container italic">OFFICIAL</span>
+      </h1>
+      <p data-animate="fade-in-up" class="opacity-0 delay-400 font-body-lg text-lg text-inverse-on-surface/70 mb-8 max-w-xl">
+        Penyedia layanan digital profesional yang berfokus pada rekayasa perangkat lunak, dokumentasi visual kreatif, dan solusi manajemen event interaktif berbasis RFID & SaaS.
+      </p>
+      <div data-animate="fade-in-up" class="opacity-0 delay-600 flex flex-wrap gap-4">
+        <a href="{{ url_for('produk') }}" class="bg-primary-container text-on-primary-container font-label-bold text-sm uppercase rounded-full px-8 py-4 hover:scale-105 active:scale-95 transition-transform shadow-lg border-2 border-primary-container">
+          Jelajahi Katalog Layanan
+        </a>
+        <a href="{{ url_for('about') }}" class="bg-transparent text-inverse-on-surface font-label-bold text-sm uppercase rounded-full px-8 py-4 hover:bg-surface/10 transition-colors border-2 border-inverse-on-surface/50 flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary-container">info</span> Tentang Kami
+        </a>
+      </div> 
+    </div>
+  </div>
+</section>
+
+<!-- PREVIEW LAYANAN UNGGULAN -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-surface">
+  <div class="max-w-7xl mx-auto">
+    <div data-animate="fade-in-up" class="opacity-0 flex flex-col md:flex-row justify-between items-end mb-12">
+      <div>
+        <h2 class="font-headline-lg text-3xl font-bold text-on-surface uppercase mb-4">Ekosistem Layanan Kami</h2>
+        <p class="font-body-lg text-on-surface-variant max-w-2xl">Terintegrasi penuh untuk memenuhi seluruh kebutuhan digitalisasi bisnis dan event Anda.</p>
+      </div>
+      <a href="{{ url_for('produk') }}" class="hidden md:flex items-center gap-2 text-primary font-label-bold uppercase tracking-wider hover:underline mt-4 md:mt-0">
+        Lihat Seluruh 12 Layanan <span class="material-symbols-outlined">arrow_forward</span>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+      <a href="{{ url_for('produk') }}#software" data-animate="fade-in-up" class="opacity-0 delay-200 bg-surface-container-low rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group border border-transparent hover:border-primary">
+        <div class="bg-primary text-primary-container p-4 rounded-full w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-[32px]">code</span></div>
+        <h3 class="font-headline-md text-xl font-bold text-on-surface mb-3">Pengembangan Software</h3>
+        <p class="font-body-md text-on-surface-variant mb-6 text-sm leading-relaxed">Pembuatan Website Company Profile, platform E-Commerce, Aplikasi Mobile Android/iOS, serta Dashboard Admin & RESTful API.</p>
+        <span class="font-label-bold text-xs text-primary uppercase flex items-center gap-1 group-hover:translate-x-1 transition-transform">Spesifikasi & Harga <span class="material-symbols-outlined text-[16px]">chevron_right</span></span>
+      </a>
+
+      <a href="{{ url_for('produk') }}#creative" data-animate="fade-in-up" class="opacity-0 delay-400 bg-surface-container-low rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group border border-transparent hover:border-secondary-container">
+        <div class="bg-tertiary text-on-tertiary p-4 rounded-full w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-[32px]">photo_camera</span></div>
+        <h3 class="font-headline-md text-xl font-bold text-on-surface mb-3">Foto & Videografi Kreatif</h3>
+        <p class="font-body-md text-on-surface-variant mb-6 text-sm leading-relaxed">Dokumentasi Event Organizer, Seminar, Wedding, Wisuda, Sports Photography (Speed Shutter), hingga Drone Aerial 4K.</p>
+        <span class="font-label-bold text-xs text-tertiary uppercase flex items-center gap-1 group-hover:translate-x-1 transition-transform">Spesifikasi & Harga <span class="material-symbols-outlined text-[16px]">chevron_right</span></span>
+      </a>
+
+      <a href="{{ url_for('produk') }}#event" data-animate="fade-in-up" class="opacity-0 delay-600 bg-surface-container-low rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group border border-transparent hover:border-tertiary">
+        <div class="bg-secondary text-on-secondary p-4 rounded-full w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-[32px]">confirmation_number</span></div>
+        <h3 class="font-headline-md text-xl font-bold text-on-surface mb-3">Event Digital Solution</h3>
+        <p class="font-body-md text-on-surface-variant mb-6 text-sm leading-relaxed">Sistem Check-in QR Code (&lt;2 detik), Live Attendance Monitoring, Timing Chip RFID Leaderboard, dan E-Sertifikat Blast.</p>
+        <span class="font-label-bold text-xs text-secondary uppercase flex items-center gap-1 group-hover:translate-x-1 transition-transform">Spesifikasi & Harga <span class="material-symbols-outlined text-[16px]">chevron_right</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PREVIEW TENTANG KAMI -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-surface-container-low">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <div data-animate="fade-in-left" class="opacity-0 relative group">
+      <div class="absolute inset-0 bg-primary-container rounded-2xl transform -rotate-2 scale-105 z-0 group-hover:rotate-0 transition-transform"></div>
+      <img class="relative z-10 w-full h-auto object-cover rounded-2xl shadow-2xl" src="{{ url_for('static', filename='images/pro.png') }}" alt="Kolaborasi Tim Haisen Official" />
+    </div>
+    <div data-animate="fade-in-right" class="opacity-0 delay-200">
+      <span class="text-xs font-label-bold text-on-surface-variant uppercase tracking-widest">Siapa Kami?</span>
+      <h2 class="font-headline-lg text-3xl md:text-4xl font-extrabold uppercase text-on-surface mt-2 mb-6">
+        Mewujudkan Inovasi Melalui <span class="text-primary italic">Teknologi & Estetika</span>
+      </h2>
+      <p class="font-body-md text-on-surface-variant mb-6 leading-relaxed">
+        Haisen Official menggabungkan kreativitas pemrograman, keunggulan visual, dan keandalan sistem interaktif. Kami berkomitmen menjadi mitra transformasi digital terpercaya bagi instansi, UMKM, dan penyelenggara event di seluruh Indonesia.
+      </p>
+      <div class="grid grid-cols-2 gap-6 mb-8">
+        <div class="border-l-4 border-primary pl-4">
+          <h4 class="font-bold text-2xl text-on-surface">100+</h4>
+          <p class="text-xs text-on-surface-variant">Proyek & Event Selesai</p>
+        </div>
+        <div class="border-l-4 border-secondary-container pl-4">
+          <h4 class="font-bold text-2xl text-on-surface">99.9%</h4>
+          <p class="text-xs text-on-surface-variant">Stabilitas Server & Sistem</p>
+        </div>
+      </div>
+      <a href="{{ url_for('about') }}" class="inline-flex items-center gap-2 bg-primary text-on-primary font-label-bold text-xs uppercase px-8 py-4 rounded-full hover:bg-primary-container hover:text-primary transition-all shadow-md">
+        Pelajari Visi & Misi Kami <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="py-16 px-margin-mobile md:px-margin-desktop bg-inverse-surface text-inverse-on-surface text-center">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="font-display-lg-mobile text-3xl md:text-4xl uppercase font-black mb-4">Siap Memulai Proyek Digital Anda?</h2>
+    <p class="font-body-md text-inverse-on-surface/70 mb-8 max-w-xl mx-auto">Konsultasikan kebutuhan aplikasi, dokumentasi event, atau sistem RFID Anda langsung bersama tim ahli Haisen Official secara gratis.</p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <a href="{{ url_for('contact') }}" class="bg-primary-container text-on-primary-container font-label-bold text-sm uppercase px-8 py-4 rounded-full hover:scale-105 transition-transform shadow-xl">Hubungi Tim Kami</a>
+      <a href="{{ url_for('cek_pesanan') }}" class="bg-transparent text-inverse-on-surface border border-inverse-on-surface/40 font-label-bold text-sm uppercase px-8 py-4 rounded-full hover:bg-surface/10 transition-colors">Lacak Status Pesanan</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

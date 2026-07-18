@@ -1,0 +1,749 @@
+<!doctype html>
+<html class="scroll-smooth light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>HAISEN OFFICIAL - Solusi Digital Profesional</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;0,800;0,900;1,900&amp;family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "background": "#F5F5F0", 
+              "surface": "#FFFFFF", 
+              "on-surface": "#111111", 
+              "on-surface-variant": "#555555", 
+              "primary": "#111111", 
+              "primary-container": "#FFD600", 
+              "on-primary": "#FFD600", 
+              "on-primary-container": "#111111", 
+              "primary-fixed": "#FFD600", 
+              "primary-fixed-dim": "#FFAB00", 
+              "on-primary-fixed": "#111111", 
+              "on-primary-fixed-variant": "#333333", 
+              "secondary": "#555555", 
+              "secondary-container": "#FFAB00", 
+              "on-secondary-container": "#111111", 
+              "on-secondary": "#FFFFFF", 
+              "secondary-fixed": "#FFE082", 
+              "secondary-fixed-dim": "#FFC107", 
+              "on-secondary-fixed": "#333333", 
+              "on-secondary-fixed-variant": "#444444", 
+              "tertiary": "#F9A825", 
+              "tertiary-container": "#FFF8E1", 
+              "on-tertiary-container": "#333333", 
+              "on-tertiary": "#111111", 
+              "tertiary-fixed": "#FFF59D", 
+              "tertiary-fixed-dim": "#FFEE58", 
+              "on-tertiary-fixed": "#333333", 
+              "on-tertiary-fixed-variant": "#444444", 
+              "inverse-surface": "#121212", 
+              "inverse-on-surface": "#F5F5F0", 
+              "surface-container-lowest": "#FFFFFF", 
+              "surface-container-low": "#F9F9F4", 
+              "surface-container": "#F0F0EB", 
+              "surface-container-high": "#EAEAE5", 
+              "surface-container-highest": "#E0E0DB", 
+              "surface-dim": "#DDDDD8", 
+              "surface-bright": "#F5F5F0", 
+              "surface-tint": "#FFD600", 
+              "outline": "#888888", 
+              "outline-variant": "#D0D0CB", 
+              "error": "#BA1A1A", 
+              "error-container": "#FFDAD6", 
+              "on-error": "#FFFFFF", 
+              "on-error-container": "#93000A"
+            },
+            borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px", },
+            spacing: { unit: "8px", "section-gap": "120px", "margin-desktop": "64px", "margin-mobile": "16px", gutter: "24px", },
+            fontFamily: { "headline-md": ["Montserrat"], "body-md": ["Inter"], "display-lg-mobile": ["Montserrat"], "body-lg": ["Inter"], "display-lg": ["Montserrat"], "label-bold": ["Inter"], "headline-lg": ["Montserrat"], "label-sm": ["Inter"], },
+            fontSize: { "headline-md": ["24px", { lineHeight: "32px", fontWeight: "700" }], "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }], "display-lg-mobile": ["40px", { lineHeight: "44px", letterSpacing: "-0.01em", fontWeight: "800", }], "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }], "display-lg": ["64px", { lineHeight: "72px", letterSpacing: "-0.02em", fontWeight: "800", }], "label-bold": ["14px", { lineHeight: "20px", fontWeight: "700" }], "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "700" }], "label-sm": ["12px", { lineHeight: "16px", fontWeight: "500" }], },
+            keyframes: {
+              fadeInUp: { '0%': { opacity: '0', transform: 'translateY(40px)' }, '100%': { opacity: '1', transform: 'translateY(0)' }, },
+              fadeInLeft: { '0%': { opacity: '0', transform: 'translateX(-40px)' }, '100%': { opacity: '1', transform: 'translateX(0)' }, },
+              fadeInRight: { '0%': { opacity: '0', transform: 'translateX(40px)' }, '100%': { opacity: '1', transform: 'translateX(0)' }, },
+            },
+            animation: {
+              'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+              'fade-in-left': 'fadeInLeft 0.8s ease-out forwards',
+              'fade-in-right': 'fadeInRight 0.8s ease-out forwards',
+            }
+          },
+        },
+      };
+    </script>
+    <style>
+      .nav-link-hover { position: relative; display: inline-block; }
+      .nav-link-hover::after {
+        content: ''; position: absolute; width: 100%; transform: scaleX(0); height: 2px;
+        bottom: -4px; left: 0; background-color: #FFD600; transform-origin: bottom right;
+        transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+      }
+      .nav-link-hover:hover::after, .nav-link-hover.active::after { transform: scaleX(1); transform-origin: bottom left; }
+
+      .mobile-link-anim { opacity: 0; transform: translateY(20px); transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+      .mobile-link-anim.show { opacity: 1; transform: translateY(0); }
+      body.menu-open { overflow: hidden; }
+      .apple-transition { transition-property: all; transition-timing-function: cubic-bezier(0.25, 1, 0.5, 1); transition-duration: 500ms; }
+
+      .slant-clip { clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%); }
+      .slant-clip-reverse { clip-path: polygon(0 15%, 100% 0, 100% 100%, 0% 100%); }
+      .glow-hover:hover { box-shadow: 0 0 32px rgba(255, 214, 0, 0.25); }
+      .delay-200 { animation-delay: 200ms; }
+      .delay-400 { animation-delay: 400ms; }
+      .delay-600 { animation-delay: 600ms; }
+      .delay-800 { animation-delay: 800ms; }
+      .delay-1000 { animation-delay: 1000ms; }
+    </style>
+  </head>
+  <body class="bg-background text-on-surface font-body-md antialiased overflow-x-hidden">
+    
+    <!-- NAVBAR -->
+    <nav class="fixed z-50 left-1/2 -translate-x-1/2 top-0 w-full max-w-full rounded-none bg-surface/80 backdrop-blur-2xl border-b border-transparent apple-transition" id="top-nav">
+      <div class="flex justify-between items-center w-full h-20 px-margin-mobile md:px-margin-desktop apple-transition" id="nav-container">
+        <a class="font-display-lg text-headline-md md:text-[28px] font-black italic tracking-tighter text-primary hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="goToSection('home')">
+          HAISEN
+        </a>
+
+        <div class="hidden md:flex gap-8 items-center h-full">
+          <a class="nav-link-hover font-body-md text-sm uppercase font-bold text-on-surface-variant hover:text-primary transition-colors cursor-pointer" onclick="goToSection('home')">Home</a>
+          <a class="nav-link-hover font-body-md text-sm uppercase font-bold text-on-surface-variant hover:text-primary transition-colors cursor-pointer" onclick="goToSection('about')">About</a>
+          <a class="nav-link-hover font-body-md text-sm uppercase font-bold text-on-surface-variant hover:text-primary transition-colors cursor-pointer" onclick="goToSection('services')">Services</a>
+          <a class="nav-link-hover font-body-md text-sm uppercase font-bold text-on-surface-variant hover:text-primary transition-colors cursor-pointer" onclick="navigateTo('logo')">Logo</a>
+          <a class="nav-link-hover font-body-md text-sm uppercase font-bold text-on-surface-variant hover:text-primary transition-colors cursor-pointer" onclick="navigateTo('privacy')">Privacy</a>
+          <a class="nav-link-hover font-body-md text-sm uppercase font-bold text-on-surface-variant hover:text-primary transition-colors cursor-pointer" onclick="navigateTo('terms')">Terms</a>
+        </div>
+
+        <button onclick="goToSection('contact-section')" class="hidden md:flex bg-primary-container text-on-primary-container hover:bg-primary hover:text-on-primary transition-all duration-300 px-6 py-2.5 rounded-full font-label-bold text-label-bold uppercase shadow-lg shadow-primary-container/30 hover:-translate-y-0.5 active:scale-95 items-center gap-2">
+          Contact Us
+        </button>
+
+        <button id="mobile-menu-open" class="md:hidden text-on-surface hover:text-primary transition-colors p-2 active:scale-90 outline-none">
+          <span class="material-symbols-outlined text-[32px]">menu</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- MOBILE MENU POPUP -->
+    <div id="mobile-popup" class="fixed inset-0 z-[100] bg-surface/95 backdrop-blur-2xl opacity-0 pointer-events-none scale-95 transition-all duration-500 flex flex-col items-center justify-center">
+      <button id="mobile-menu-close" class="absolute top-6 right-6 text-on-surface hover:text-primary transition-all duration-300 p-2 hover:rotate-90 active:scale-90 outline-none">
+        <span class="material-symbols-outlined text-[40px]">close</span>
+      </button>
+      <div class="flex flex-col items-center gap-8 w-full px-8">
+        <a class="mobile-link-anim font-display-lg text-headline-md uppercase italic font-black text-on-surface hover:text-primary transition-colors tracking-tighter cursor-pointer" onclick="goToSection('home')">Home</a>
+        <a class="mobile-link-anim font-display-lg text-headline-md uppercase italic font-black text-on-surface hover:text-primary transition-colors tracking-tighter cursor-pointer" onclick="goToSection('about')">About</a>
+        <a class="mobile-link-anim font-display-lg text-headline-md uppercase italic font-black text-on-surface hover:text-primary transition-colors tracking-tighter cursor-pointer" onclick="goToSection('services')">Services</a>
+        <a class="mobile-link-anim font-display-lg text-headline-md uppercase italic font-black text-on-surface hover:text-primary transition-colors tracking-tighter cursor-pointer" onclick="navigateTo('logo')">Logo</a>
+        <a class="mobile-link-anim font-display-lg text-headline-md uppercase italic font-black text-on-surface hover:text-primary transition-colors tracking-tighter cursor-pointer" onclick="navigateTo('privacy')">Privacy</a>
+        <a class="mobile-link-anim font-display-lg text-headline-md uppercase italic font-black text-on-surface hover:text-primary transition-colors tracking-tighter cursor-pointer" onclick="navigateTo('terms')">Terms</a>
+        
+        <div class="mobile-link-anim w-16 h-1 bg-surface-variant rounded-full my-2"></div>
+
+        <button onclick="goToSection('contact-section')" class="mobile-link-anim w-full max-w-xs bg-primary-container text-on-primary-container font-label-bold text-lg uppercase py-4 rounded-full hover:bg-primary hover:text-on-primary shadow-xl transition-all active:scale-95 flex items-center justify-center gap-2">
+          Contact Us <span class="material-symbols-outlined">arrow_forward</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT (SPA PAGES) -->
+    <main class="pt-20">
+      
+      <!-- PAGE: HOME -->
+      <div id="page-home" class="page-section">
+        <!-- HERO -->
+        <section id="home" class="relative min-h-[921px] flex items-center slant-clip bg-inverse-surface overflow-hidden group">
+          <div class="absolute inset-0 z-0 overflow-hidden">
+            <div class="absolute inset-0 bg-primary-container/10 mix-blend-multiply z-10"></div>
+            <div style="position: relative; width: 100%; height: 100%;">
+              <img alt="Digital technology background" src="banner.png" class="w-full h-full object-cover object-center transform transition-transform duration-[10000ms] ease-out group-hover:scale-110" style="display: block; filter: contrast(1.2) grayscale(20%);" />
+              <div style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 30%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0) 80%); pointer-events: none;"></div>
+            </div>
+          </div>
+          <div class="relative z-20 w-full px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-12 gap-gutter">
+            <div class="md:col-span-8 lg:col-span-7">
+              <span data-animate="fade-in-up" class="opacity-0 inline-block bg-primary-container text-on-primary-container px-4 py-1 rounded-sm font-label-bold text-label-bold uppercase mb-6 tracking-wider shadow-lg">
+                Solusi Digital Profesional
+              </span>
+              <h1 data-animate="fade-in-up" class="opacity-0 delay-200 font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-inverse-on-surface uppercase mb-6 drop-shadow-xl leading-tight">
+                HAISEN<br /><span class="text-primary-container italic">OFFICIAL</span>
+              </h1>
+              <p data-animate="fade-in-up" class="opacity-0 delay-400 font-body-lg text-body-lg text-inverse-on-surface/70 mb-8 max-w-xl">
+                Penyedia layanan digital profesional yang berfokus pada pengembangan teknologi, dokumentasi visual, dan solusi digital untuk individu, UMKM, hingga penyedia website penyelenggara event.
+              </p>
+              <div data-animate="fade-in-up" class="opacity-0 delay-600 flex flex-wrap gap-4">
+                <button onclick="goToSection('services')" class="bg-primary-container text-on-primary-container font-label-bold text-label-bold uppercase rounded-full px-8 py-4 hover:scale-105 active:scale-95 transition-transform duration-150 shadow-lg border-2 border-primary-container">Explore Services</button>
+                <button onclick="goToSection('about')" class="bg-transparent text-inverse-on-surface font-label-bold text-label-bold uppercase rounded-full px-8 py-4 hover:bg-surface/10 transition-colors duration-150 border-2 border-inverse-on-surface/50 flex items-center gap-2 group/btn">
+                  <span class="material-symbols-outlined group-hover/btn:text-primary-container transition-colors">info</span> Learn More
+                </button>
+              </div>  
+            </div>
+          </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about" class="py-section-gap px-margin-mobile md:px-margin-desktop bg-surface overflow-hidden">
+          <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div data-animate="fade-in-left" class="opacity-0 order-2 lg:order-1 relative group">
+              <div class="absolute inset-0 bg-primary-container rounded-2xl transform -rotate-3 scale-105 z-0 group-hover:rotate-0 transition-transform duration-500"></div>
+              <div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl">
+                <img class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105" src="pro.png" alt="Team collaboration" />
+              </div>
+            </div>
+            <div data-animate="fade-in-right" class="opacity-0 delay-200 order-1 lg:order-2">
+              <h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg uppercase italic text-on-surface mb-6"> <br /><span class="text-primary">HAISEN OFFICIAL</span></h2>
+              <p class="font-body-lg text-body-lg text-on-surface-variant mb-6">Kami hadir untuk membantu setiap klien mewujudkan kebutuhan digital melalui layanan yang inovatif, berkualitas, dan terpercaya. Dengan menggabungkan kreativitas, teknologi, dan pengalaman, kami menghasilkan solusi yang tidak hanya menarik secara visual tetapi juga memberikan nilai tambah bagi perkembangan bisnis klien.</p>
+              <div class="mb-8 p-6 bg-surface-container-low rounded-xl border-l-4 border-primary-container">
+                <h3 class="font-headline-md text-headline-md text-on-surface mb-3">Visi Kami</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant">Menjadi perusahaan digital yang menghadirkan solusi teknologi, media kreatif, dan sistem informasi yang inovatif untuk mendukung perkembangan bisnis dan berbagai kegiatan masyarakat.</p>
+              </div>
+              <button onclick="goToSection('services')" class="bg-primary text-on-primary border-2 border-primary font-label-bold text-label-bold uppercase rounded-full px-8 py-4 hover:bg-on-primary hover:text-primary transition-colors duration-200 active:scale-95 transform">Lihat Layanan Kami</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- MISSION -->
+        <section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-surface-container-low">
+          <div class="max-w-7xl mx-auto">
+            <div data-animate="fade-in-up" class="opacity-0 text-center mb-12">
+              <h2 class="font-headline-lg text-headline-lg text-on-surface uppercase mb-4">Misi Kami</h2>
+              <p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl mx-auto">Komitmen kami dalam setiap pelayanan</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+              <div data-animate="fade-in-up" class="opacity-0 delay-200 bg-surface rounded-xl p-6 shadow-md border-l-4 border-primary-container hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div class="bg-primary-container/10 text-primary p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4"><span class="material-symbols-outlined text-[24px]">workspace_premium</span></div>
+                <h3 class="font-headline-md text-headline-md text-on-surface mb-2">Layanan Terbaik</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant">Memberikan layanan terbaik dengan kualitas yang profesional untuk setiap klien.</p>
+              </div>
+              <div data-animate="fade-in-up" class="opacity-0 delay-400 bg-surface rounded-xl p-6 shadow-md border-l-4 border-secondary-container hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div class="bg-primary-container/10 text-primary p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4"><span class="material-symbols-outlined text-[24px]">developer_mode</span></div>
+                <h3 class="font-headline-md text-headline-md text-on-surface mb-2">Aplikasi Modern</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant">Mengembangkan aplikasi dan sistem yang aman, modern, serta mudah digunakan.</p>
+              </div>
+              <div data-animate="fade-in-up" class="opacity-0 delay-600 bg-surface rounded-xl p-6 shadow-md border-l-4 border-tertiary-container hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div class="bg-primary-container/10 text-primary p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4"><span class="material-symbols-outlined text-[24px]">photo_camera</span></div>
+                <h3 class="font-headline-md text-headline-md text-on-surface mb-2">Dokumentasi Kreatif</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant">Menyediakan layanan foto dan videografi yang kreatif dan berkualitas tinggi.</p>
+              </div>
+              <div data-animate="fade-in-up" class="opacity-0 delay-200 bg-surface rounded-xl p-6 shadow-md border-l-4 border-primary-container hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div class="bg-primary-container/10 text-primary p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4"><span class="material-symbols-outlined text-[24px]">handshake</span></div>
+                <h3 class="font-headline-md text-headline-md text-on-surface mb-2">Mitra Terpercaya</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant">Menjadi mitra terpercaya bagi setiap klien dalam proses transformasi digital.</p>
+              </div>
+              <div data-animate="fade-in-up" class="opacity-0 delay-400 bg-surface rounded-xl p-6 shadow-md border-l-4 border-secondary-container hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div class="bg-primary-container/10 text-primary p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4"><span class="material-symbols-outlined text-[24px]">support_agent</span></div>
+                <h3 class="font-headline-md text-headline-md text-on-surface mb-2">Pelayanan Prima</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant">Mengutamakan kepuasan pelanggan melalui pelayanan yang cepat, ramah, dan bertanggung jawab.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SERVICES -->
+        <section id="services" class="py-section-gap px-margin-mobile md:px-margin-desktop bg-surface">
+          <div class="max-w-7xl mx-auto">
+            <div data-animate="fade-in-up" class="opacity-0 flex flex-col md:flex-row justify-between items-end mb-12">
+              <div>
+                <h2 class="font-headline-lg text-headline-lg text-on-surface uppercase mb-4">Layanan Kami</h2>
+                <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Solusi digital lengkap untuk berbagai kebutuhan bisnis Anda</p>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+              <div data-animate="fade-in-up" class="opacity-0 delay-200 flex-1 bg-surface-container-low rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group cursor-pointer relative overflow-hidden border-2 border-transparent hover:border-primary-container/30">
+                <div class="absolute top-0 right-0 -mr-4 -mt-4 text-surface-container-highest opacity-20 transform rotate-12 group-hover:scale-110 group-hover:text-primary-container/20 transition-all duration-500"><span class="material-symbols-outlined text-[120px]" data-weight="fill">code</span></div>
+                <div class="relative z-10">
+                  <div class="bg-primary-container text-on-primary-container p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4"><span class="material-symbols-outlined text-[28px]">computer</span></div>
+                  <h3 class="font-headline-md text-headline-md text-on-surface mb-3">Pengembangan Software</h3>
+                  <p class="font-body-md text-body-md text-on-surface-variant mb-4">Layanan pembuatan berbagai jenis aplikasi dan sistem informasi sesuai kebutuhan klien.</p>
+                  <ul class="space-y-2 text-sm">
+                    <li class="flex items-center gap-2 text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px]">check_circle</span> Website Company Profile</li>
+                    <li class="flex items-center gap-2 text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px]">check_circle</span> Website E-Commerce</li>
+                    <li class="flex items-center gap-2 text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px]">check_circle</span> Aplikasi Mobile Android & iOS</li>
+                    <li class="flex items-center gap-2 text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px]">check_circle</span> Dashboard Admin & API</li>
+                  </ul>
+                </div>
+              </div>
+              <div data-animate="fade-in-up" class="opacity-0 delay-400 flex-1 bg-surface-container-low rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group cursor-pointer relative overflow-hidden border-2 border-transparent hover:border-secondary-container/30">
+                <div class="absolute top-0 right-0 -mr-4 -mt-4 text-surface-container-highest opacity-20 transform rotate-12 group-hover:scale-110 group-hover:text-secondary-container/20 transition-all duration-500"><span class="material-symbols-outlined text-[120px]" data-weight="fill">photo_camera</span></div>
+                <div class="relative z-10">
+                  <div class="bg-tertiary-container text-tertiary p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4"><span class="material-symbols-outlined text-[28px]">videocam</span></div>
+                  <h3 class="font-headline-md text-headline-md text-on-surface mb-3">Foto & Videografi</h3>
+                  <p class="font-body-md text-body-md text-on-surface-variant mb-4">Layanan dokumentasi profesional untuk berbagai kebutuhan event dan bisnis.</p>
+                  <ul class="space-y-2 text-sm">
+                    <li class="flex items-center gap-2 text-on-surface-variant"><span class="material-symbols-outlined text-tertiary text-[16px]">check_circle</span> Event Organizer & Seminar</li>
+                    <li class="flex items-center gap-2 text-on-surface-variant"><span class="material-symbols-outlined text-tertiary text-[16px]">check_circle</span> Pernikahan & Wisuda</li>
+                    <li class="flex items-center gap-2 text-on-surface-variant"><span class="material-symbols-outlined text-tertiary text-[16px]">check_circle</span> Running Event & Gathering</li>
+                    <li class="flex items-center gap-2 text-on-surface-variant"><span class="material-symbols-outlined text-tertiary text-[16px]">check_circle</span> Drone Photography</li>
+                  </ul>
+                </div>
+              </div>
+              <div data-animate="fade-in-up" class="opacity-0 delay-600 flex-1 bg-surface-container-low rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group cursor-pointer relative overflow-hidden border-2 border-transparent hover:border-tertiary-container/30">
+                <div class="absolute top-0 right-0 -mr-4 -mt-4 text-surface-container-highest opacity-20 transform rotate-12 group-hover:scale-110 group-hover:text-tertiary-container/20 transition-all duration-500"><span class="material-symbols-outlined text-[120px]" data-weight="fill">event</span></div>
+                <div class="relative z-10">
+                  <div class="bg-secondary-container text-on-secondary-container p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4"><span class="material-symbols-outlined text-[28px]">confirmation_number</span></div>
+                  <h3 class="font-headline-md text-headline-md text-on-surface mb-3">Event Digital Solution</h3>
+                  <p class="font-body-md text-body-md text-on-surface-variant mb-4">Solusi digital lengkap untuk penyelenggaraan event modern.</p>
+                  <ul class="space-y-2 text-sm">
+                    <li class="flex items-center gap-2 text-on-surface-variant"><span class="material-symbols-outlined text-secondary-container text-[16px]">check_circle</span> QR Code Check-in & E-Ticket</li>
+                    <li class="flex items-center gap-2 text-on-surface-variant"><span class="material-symbols-outlined text-secondary-container text-[16px]">check_circle</span> Live Participant Monitoring</li>
+                    <li class="flex items-center gap-2 text-on-surface-variant"><span class="material-symbols-outlined text-secondary-container text-[16px]">check_circle</span> Leaderboard & Timing System</li>
+                    <li class="flex items-center gap-2 text-on-surface-variant"><span class="material-symbols-outlined text-secondary-container text-[16px]">check_circle</span> Sertifikat Digital</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- WHY US & VALUES -->
+        <section id="why-us" class="py-section-gap px-margin-mobile md:px-margin-desktop bg-surface-container-low">
+          <div class="max-w-7xl mx-auto">
+            <div data-animate="fade-in-up" class="opacity-0 text-center mb-12">
+              <h2 class="font-headline-lg text-headline-lg text-on-surface uppercase mb-4">Mengapa Memilih Kami?</h2>
+              <p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl mx-auto">Keunggulan yang menjadikan kami pilihan terbaik untuk kebutuhan digital Anda</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter mb-section-gap">
+              <div data-animate="fade-in-up" class="opacity-0 delay-200 bg-surface rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 text-center">
+                <div class="bg-primary text-primary-container p-4 rounded-full w-16 h-16 flex items-center justify-center mb-4 mx-auto"><span class="material-symbols-outlined text-[32px]">verified</span></div>
+                <h3 class="font-headline-md text-headline-md text-on-surface mb-2">Profesional</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant">Tim kami memiliki pengalaman dengan standar profesional.</p>
+              </div>
+              <div data-animate="fade-in-up" class="opacity-0 delay-400 bg-surface rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 text-center">
+                <div class="bg-primary text-primary-container p-4 rounded-full w-16 h-16 flex items-center justify-center mb-4 mx-auto"><span class="material-symbols-outlined text-[32px]">high_quality</span></div>
+                <h3 class="font-headline-md text-headline-md text-on-surface mb-2">Berkualitas</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant">Memperhatikan detail, performa, keamanan, dan kepuasan klien.</p>
+              </div>
+              <div data-animate="fade-in-up" class="opacity-0 delay-600 bg-surface rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 text-center">
+                <div class="bg-primary text-primary-container p-4 rounded-full w-16 h-16 flex items-center justify-center mb-4 mx-auto"><span class="material-symbols-outlined text-[32px]">payments</span></div>
+                <h3 class="font-headline-md text-headline-md text-on-surface mb-2">Harga Kompetitif</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant">Terjangkau tanpa mengurangi kualitas layanan.</p>
+              </div>
+              <div data-animate="fade-in-up" class="opacity-0 delay-200 bg-surface rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 text-center">
+                <div class="bg-primary text-primary-container p-4 rounded-full w-16 h-16 flex items-center justify-center mb-4 mx-auto"><span class="material-symbols-outlined text-[32px]">schedule</span></div>
+                <h3 class="font-headline-md text-headline-md text-on-surface mb-2">Tepat Waktu</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant">Menyelesaikan pekerjaan sesuai jadwal yang disepakati.</p>
+              </div>
+              <div data-animate="fade-in-up" class="opacity-0 delay-400 bg-surface rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 text-center">
+                <div class="bg-primary text-primary-container p-4 rounded-full w-16 h-16 flex items-center justify-center mb-4 mx-auto"><span class="material-symbols-outlined text-[32px]">security</span></div>
+                <h3 class="font-headline-md text-headline-md text-on-surface mb-2">Aman & Terpercaya</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant">Data dijaga kerahasiaannya dengan standar keamanan baik.</p>
+              </div>
+              <div data-animate="fade-in-up" class="opacity-0 delay-600 bg-surface rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 text-center">
+                <div class="bg-primary text-primary-container p-4 rounded-full w-16 h-16 flex items-center justify-center mb-4 mx-auto"><span class="material-symbols-outlined text-[32px]">support</span></div>
+                <h3 class="font-headline-md text-headline-md text-on-surface mb-2">Dukungan Berkelanjutan</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant">Konsultasi dan dukungan setelah proyek selesai.</p>
+              </div>
+            </div>
+
+            <div id="values" data-animate="fade-in-up" class="opacity-0 text-center mb-12">
+              <h2 class="font-headline-lg text-headline-lg text-on-surface uppercase mb-4">Nilai Perusahaan</h2>
+              <p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl mx-auto">Prinsip yang kami pegang teguh dalam setiap pelayanan</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-gutter">
+              <div data-animate="fade-in-up" class="opacity-0 delay-200 text-center group">
+                <div class="bg-surface rounded-2xl p-6 h-full hover:bg-primary hover:text-primary-container transition-all duration-300 hover:-translate-y-2">
+                  <div class="bg-primary-container text-primary p-4 rounded-full w-20 h-20 flex items-center justify-center mb-4 mx-auto group-hover:scale-110 group-hover:bg-primary-container/20 transition-transform duration-300"><span class="material-symbols-outlined text-[40px]">verified_user</span></div>
+                  <h3 class="font-headline-md text-headline-md mb-2">Integrity</h3>
+                  <p class="font-body-md text-body-md text-sm opacity-70 group-hover:opacity-100">Kejujuran, tanggung jawab, profesionalisme.</p>
+                </div>
+              </div>
+              <div data-animate="fade-in-up" class="opacity-0 delay-400 text-center group">
+                <div class="bg-surface rounded-2xl p-6 h-full hover:bg-primary hover:text-primary-container transition-all duration-300 hover:-translate-y-2">
+                  <div class="bg-primary-container text-primary p-4 rounded-full w-20 h-20 flex items-center justify-center mb-4 mx-auto group-hover:scale-110 group-hover:bg-primary-container/20 transition-transform duration-300"><span class="material-symbols-outlined text-[40px]">lightbulb</span></div>
+                  <h3 class="font-headline-md text-headline-md mb-2">Innovation</h3>
+                  <p class="font-body-md text-body-md text-sm opacity-70 group-hover:opacity-100">Solusi kreatif dengan teknologi terkini.</p>
+                </div>
+              </div>
+              <div data-animate="fade-in-up" class="opacity-0 delay-600 text-center group">
+                <div class="bg-surface rounded-2xl p-6 h-full hover:bg-primary hover:text-primary-container transition-all duration-300 hover:-translate-y-2">
+                  <div class="bg-primary-container text-primary p-4 rounded-full w-20 h-20 flex items-center justify-center mb-4 mx-auto group-hover:scale-110 group-hover:bg-primary-container/20 transition-transform duration-300"><span class="material-symbols-outlined text-[40px]">workspace_premium</span></div>
+                  <h3 class="font-headline-md text-headline-md mb-2">Quality</h3>
+                  <p class="font-body-md text-body-md text-sm opacity-70 group-hover:opacity-100">Mengutamakan kualitas dalam layanan.</p>
+                </div>
+              </div>
+              <div data-animate="fade-in-up" class="opacity-0 delay-800 text-center group">
+                <div class="bg-surface rounded-2xl p-6 h-full hover:bg-primary hover:text-primary-container transition-all duration-300 hover:-translate-y-2">
+                  <div class="bg-primary-container text-primary p-4 rounded-full w-20 h-20 flex items-center justify-center mb-4 mx-auto group-hover:scale-110 group-hover:bg-primary-container/20 transition-transform duration-300"><span class="material-symbols-outlined text-[40px]">favorite</span></div>
+                  <h3 class="font-headline-md text-headline-md mb-2">Satisfaction</h3>
+                  <p class="font-body-md text-body-md text-sm opacity-70 group-hover:opacity-100">Kepuasan pelanggan prioritas utama.</p>
+                </div>
+              </div>
+              <div data-animate="fade-in-up" class="opacity-0 delay-1000 text-center group">
+                <div class="bg-surface rounded-2xl p-6 h-full hover:bg-primary hover:text-primary-container transition-all duration-300 hover:-translate-y-2">
+                  <div class="bg-primary-container text-primary p-4 rounded-full w-20 h-20 flex items-center justify-center mb-4 mx-auto group-hover:scale-110 group-hover:bg-primary-container/20 transition-transform duration-300"><span class="material-symbols-outlined text-[40px]">diversity_3</span></div>
+                  <h3 class="font-headline-md text-headline-md mb-2">Collaboration</h3>
+                  <p class="font-body-md text-body-md text-sm opacity-70 group-hover:opacity-100">Kerja sama saling menguntungkan.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CLOSING & CONTACT -->
+        <section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-inverse-surface text-inverse-on-surface slant-clip-reverse">
+          <div class="max-w-5xl mx-auto text-center">
+            <div data-animate="fade-in-up" class="opacity-0">
+              <div class="inline-block bg-primary-container/10 p-4 rounded-full mb-6"><span class="material-symbols-outlined text-primary-container text-[40px]">rocket_launch</span></div>
+              <h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg uppercase text-inverse-on-surface mb-6">
+                Siap Tumbuh <span class="text-primary-container italic">Bersama Kami?</span>
+              </h2>
+              <p class="font-body-lg text-body-lg text-inverse-on-surface/70 mb-8 max-w-3xl mx-auto">
+                Haisen Bisnis berkomitmen menjadi mitra digital terpercaya yang membantu individu, organisasi, perusahaan, dan penyelenggara event dalam menghadirkan solusi teknologi, media kreatif, serta sistem digital yang modern, efisien, dan berkualitas.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact-section" class="py-section-gap px-margin-mobile md:px-margin-desktop bg-surface-container-low">
+          <div data-animate="fade-in-up" class="opacity-0 max-w-4xl mx-auto text-center">
+            <div class="inline-block bg-primary-container/10 p-3 rounded-full mb-6"><span class="material-symbols-outlined text-primary text-[32px] animate-pulse">mail</span></div>
+            <h2 class="font-headline-lg text-headline-lg text-on-surface uppercase mb-4">Hubungi Kami</h2>
+            <p class="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-2xl mx-auto">Siap untuk memulai proyek digital Anda? Hubungi kami untuk konsultasi gratis.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <button onclick="window.location.href='mailto:info@haisen.id';" class="group relative flex items-center gap-4 bg-primary-container text-on-primary-container font-display-lg-mobile text-headline-md uppercase rounded-full px-12 py-6 hover:scale-105 active:scale-95 transition-all duration-300 shadow-xl">
+                <span class="material-symbols-outlined text-[32px]">email</span><span>Email Kami</span>
+              </button>
+              <button onclick="window.location.href='https://wa.me/6285166662385';" class="group relative flex items-center gap-4 bg-primary text-primary-container font-display-lg-mobile text-headline-md uppercase rounded-full px-12 py-6 hover:scale-105 active:scale-95 transition-all duration-300 shadow-xl">
+                <span class="material-symbols-outlined text-[32px]">chat</span><span>WhatsApp</span>
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- PAGE: LOGO -->
+      <div id="page-logo" class="page-section hidden">
+        <section class="min-h-screen py-24 px-margin-mobile md:px-margin-desktop bg-surface">
+          <div class="max-w-4xl mx-auto">
+            <button onclick="navigateTo('home')" class="flex items-center gap-2 text-on-surface-variant hover:text-primary font-label-bold mb-12 transition-colors">
+              <span class="material-symbols-outlined">arrow_back</span> Kembali ke Beranda
+            </button>
+            
+            <h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg uppercase text-on-surface mb-4">Brand Logo</h1>
+            <p class="font-body-lg text-body-lg text-on-surface-variant mb-16 max-w-2xl">Identitas visual resmi Haisen Official. Penggunaan logo harus mengikuti pedoman ini untuk menjaga konsistensi brand.</p>
+
+              <div class="bg-surface-container-low rounded-2xl p-12 md:p-16 flex flex-col items-center justify-center mb-16 border border-outline-variant glow-hover">
+              <img src="logo.png" alt="Haisen Official logo" class="w-48 h-48 md:w-64 md:h-64 object-contain mb-8 drop-shadow-2xl" />
+              <h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Logo Utama (Primary)</h2>
+              <p class="font-body-md text-on-surface-variant text-center max-w-md">Digunakan untuk latar belakang terang (Light Mode) dan sebagai identitas utama perusahaan.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+              <div class="bg-inverse-surface rounded-2xl p-12 flex flex-col items-center justify-center border border-inverse-on-surface/10">
+                <img src="logoPutih.png" alt="Haisen Official logo versi negatif" class="w-32 h-32 mb-6 object-contain" />
+                <h3 class="font-headline-md text-headline-md text-inverse-on-surface mb-2">Versi Negatif</h3>
+                <p class="font-body-md text-inverse-on-surface/60 text-center text-sm">Digunakan pada latar belakang gelap (Dark Mode).</p>
+              </div>
+              <div class="bg-surface-container-low rounded-2xl p-12 flex flex-col items-center justify-center border border-outline-variant">
+                <div class="font-display-lg text-[80px] md:text-[100px] font-black italic tracking-tighter text-primary leading-none mb-6">HAISEN</div>
+                <h3 class="font-headline-md text-headline-md text-on-surface mb-2">Logotype (Wordmark)</h3>
+                <p class="font-body-md text-on-surface-variant text-center text-sm">Digunakan untuk header website dan media tulis.</p>
+              </div>
+            </div>
+
+            <div class="bg-surface border-l-4 border-primary-container p-8 rounded-r-xl">
+              <h3 class="font-headline-md text-headline-md text-on-surface mb-4 flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary-container">info</span> Pedoman Penggunaan
+              </h3>
+              <ul class="space-y-3 text-on-surface-variant">
+                <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span> Jangan mengubah proporsi atau distorsi logo.</li>
+                <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span> Berikan ruang kosong (clearspace) minimal setinggi huruf 'H' di sekeliling logo.</li>
+                <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span> Hindari penggunaan logo pada latar belakang yang terlalu ramai atau bertabrakan warnanya.</li>
+                <li class="flex items-start gap-3"><span class="material-symbols-outlined text-error text-[20px] mt-0.5">close</span> Dilarang menambahkan efek bayangan, outline, atau gradasi yang tidak sesuai pedoman.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- PAGE: PRIVACY POLICY -->
+      <div id="page-privacy" class="page-section hidden">
+        <section class="min-h-screen py-24 px-margin-mobile md:px-margin-desktop bg-surface">
+          <div class="max-w-4xl mx-auto">
+            <button onclick="navigateTo('home')" class="flex items-center gap-2 text-on-surface-variant hover:text-primary font-label-bold mb-12 transition-colors">
+              <span class="material-symbols-outlined">arrow_back</span> Kembali ke Beranda
+            </button>
+            <h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg uppercase text-on-surface mb-4">Kebijakan Privasi</h1>
+            <p class="font-body-lg text-on-surface-variant mb-12">Terakhir diperbarui: 24 Mei 2024</p>
+            
+            <div class="prose max-w-none space-y-8 text-on-surface-variant font-body-md leading-relaxed">
+              <div class="bg-surface-container-low p-6 rounded-xl border-l-4 border-primary-container">
+                <p class="text-on-surface">Di Haisen Bisnis, kami berkomitmen untuk melindungi privasi Anda. Kebijakan Privasi ini menjelaskan bagaimana kami mengumpulkan, menggunakan, dan mengamankan informasi pribadi Anda saat menggunakan layanan kami.</p>
+              </div>
+
+              <div>
+                <h2 class="font-headline-md text-headline-md text-on-surface mb-4 flex items-center gap-2"><span class="text-primary-container font-bold">01.</span> Informasi yang Kami Kumpulkan</h2>
+                <p class="mb-3">Kami dapat mengumpulkan beberapa jenis informasi, termasuk:</p>
+                <ul class="list-disc pl-6 space-y-2">
+                  <li><strong class="text-on-surface">Data Pribadi:</strong> Nama, alamat email, nomor telepon, dan alamat yang Anda berikan secara sukarela.</li>
+                  <li><strong class="text-on-surface">Data Transaksi:</strong> Riwayat pesanan, pembayaran, dan invoice yang terkait dengan layanan yang Anda gunakan.</li>
+                  <li><strong class="text-on-surface">Data Teknis:</strong> Alamat IP, tipe browser, sistem operasi, dan data cookies saat mengakses website kami.</li>
+                </ul>
+              </div>
+
+              <div>
+                <h2 class="font-headline-md text-headline-md text-on-surface mb-4 flex items-center gap-2"><span class="text-primary-container font-bold">02.</span> Penggunaan Informasi</h2>
+                <p class="mb-3">Informasi yang dikumpulkan digunakan untuk:</p>
+                <ul class="list-disc pl-6 space-y-2">
+                  <li>Menyediakan, mengoperasikan, dan memelihara layanan digital kami.</li>
+                  <li>Memproses pendaftaran event, e-ticket, dan pembayaran.</li>
+                  <li>Mengirimkan informasi terkait layanan, pembaruan, atau promosi (dengan persetujuan Anda).</li>
+                  <li>Meningkatkan kualitas layanan, keamanan, dan pengalaman pengguna.</li>
+                </ul>
+              </div>
+
+              <div>
+                <h2 class="font-headline-md text-headline-md text-on-surface mb-4 flex items-center gap-2"><span class="text-primary-container font-bold">03.</span> Perlindungan Data</h2>
+                <p>Kami menerapkan langkah-langkah keamanan teknis dan organisasi yang sesuai untuk melindungi data pribadi Anda dari akses yang tidak sah, pengubahan, pengungkapan, atau penghancuran. Data disimpan di server yang aman dengan enkripsi standar industri.</p>
+              </div>
+
+              <div>
+                <h2 class="font-headline-md text-headline-md text-on-surface mb-4 flex items-center gap-2"><span class="text-primary-container font-bold">04.</span> Penggunaan Cookies</h2>
+                <p>Website kami menggunakan cookies untuk meningkatkan pengalaman penjelajahan Anda. Anda dapat mengatur browser Anda untuk menolak semua cookies atau memberi tahu Anda saat cookie dikirim. Namun, beberapa fitur website mungkin tidak berfungsi dengan baik tanpa cookies.</p>
+              </div>
+
+              <div>
+                <h2 class="font-headline-md text-headline-md text-on-surface mb-4 flex items-center gap-2"><span class="text-primary-container font-bold">05.</span> Hak Anda</h2>
+                <p>Anda memiliki hak untuk mengakses, memperbaiki, atau menghapus data pribadi Anda yang kami simpan. Untuk mengajukan permintaan terkait data pribadi Anda, silakan hubungi kami melalui informasi kontak di bawah.</p>
+              </div>
+
+              <div class="bg-inverse-surface text-inverse-on-surface p-8 rounded-xl mt-12">
+                <h3 class="font-headline-md text-headline-md text-primary-container mb-4">Hubungi Kami</h3>
+                <p>Jika Anda memiliki pertanyaan tentang Kebijakan Privasi ini, silakan hubungi kami di:</p>
+                <ul class="mt-4 space-y-2">
+                  <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-primary-container">email</span> haisen.bussines@gmail.com</li>
+                  <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-primary-container">phone</span> +62 851-6666-2385</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- PAGE: TERMS & CONDITIONS -->
+      <div id="page-terms" class="page-section hidden">
+        <section class="min-h-screen py-24 px-margin-mobile md:px-margin-desktop bg-surface">
+          <div class="max-w-4xl mx-auto">
+            <button onclick="navigateTo('home')" class="flex items-center gap-2 text-on-surface-variant hover:text-primary font-label-bold mb-12 transition-colors">
+              <span class="material-symbols-outlined">arrow_back</span> Kembali ke Beranda
+            </button>
+            <h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg uppercase text-on-surface mb-4">Syarat & Ketentuan</h1>
+            <p class="font-body-lg text-on-surface-variant mb-12">Terakhir diperbarui: 24 Mei 2024</p>
+            
+            <div class="prose max-w-none space-y-8 text-on-surface-variant font-body-md leading-relaxed">
+              <div class="bg-surface-container-low p-6 rounded-xl border-l-4 border-primary-container">
+                <p class="text-on-surface">Dengan mengakses atau menggunakan layanan yang disediakan oleh Haisen Bisnis, Anda menyetujui untuk terikat oleh Syarat dan Ketentuan berikut. Jika Anda tidak menyetujui ketentuan ini, harap jangan menggunakan layanan kami.</p>
+              </div>
+
+              <div>
+                <h2 class="font-headline-md text-headline-md text-on-surface mb-4 flex items-center gap-2"><span class="text-primary-container font-bold">01.</span> Ketentuan Umum</h2>
+                <p>"Layanan" merujuk pada seluruh jasa pengembangan software, dokumentasi foto/video, dan solusi digital event yang disediakan oleh Haisen Bisnis. Pengguna wajib berusia minimal 18 tahun atau memiliki persetujuan dari orang tua/wali untuk menggunakan layanan ini.</p>
+              </div>
+
+              <div>
+                <h2 class="font-headline-md text-headline-md text-on-surface mb-4 flex items-center gap-2"><span class="text-primary-container font-bold">02.</span> Penggunaan Layanan</h2>
+                <ul class="list-disc pl-6 space-y-2">
+                  <li>Anda setuju untuk menggunakan layanan kami hanya untuk tujuan yang sah dan sesuai dengan hukum yang berlaku.</li>
+                  <li>Dilarang menggunakan layanan kami dengan cara yang dapat merusak, menonaktifkan, atau mengganggu server atau jaringan kami.</li>
+                  <li>Anda bertanggung jawab untuk menjaga kerahasiaan akun dan kata sandi yang diberikan terkait sistem yang kami buat.</li>
+                </ul>
+              </div>
+
+              <div>
+                <h2 class="font-headline-md text-headline-md text-on-surface mb-4 flex items-center gap-2"><span class="text-primary-container font-bold">03.</span> Pembayaran & Refund</h2>
+                <p class="mb-2">Ketentuan terkait keuangan dalam kerja sama:</p>
+                <ul class="list-disc pl-6 space-y-2">
+                  <li>Pembayaran dilakukan berdasarkan kesepakatan yang tertera di dalam proposal atau invoice yang telah disetujui kedua belah pihak.</li>
+                  <li>Pembayaran awal (Down Payment) wajib dilakukan sebelum proses pekerjaan dimulai.</li>
+                  <li>Refund atau pengembalian dana hanya dapat dilakukan jika terdapat kesalahan signifikan dari pihak Haisen Bisnis yang menyebabkan layanan tidak dapat berjalan, sesuai dengan kesepakatan tertulis.</li>
+                </ul>
+              </div>
+
+              <div>
+                <h2 class="font-headline-md text-headline-md text-on-surface mb-4 flex items-center gap-2"><span class="text-primary-container font-bold">04.</span> Hak Kekayaan Intelektual</h2>
+                <p>Seluruh hak cipta, merek dagang, dan hak kekayaan intelektual lainnya yang terkait dengan desain, kode program, dan aset digital yang dibuat oleh Haisen Bisnis tetap menjadi milik Haisen Bisnis hingga pembayaran penuh selesai dilakukan. Setelah lunas, hak penggunaan source code/file asli akan diserahkan kepada klien sesuai perjanjian.</p>
+              </div>
+
+              <div>
+                <h2 class="font-headline-md text-headline-md text-on-surface mb-4 flex items-center gap-2"><span class="text-primary-container font-bold">05.</span> Batasan Tanggung Jawab</h2>
+                <p>Haisen Bisnis tidak bertanggung jawab atas kerugian tidak langsung, insidental, atau konsekuensial yang timbul dari penggunaan layanan kami. Tanggung jawab maksimal kami terbatas pada jumlah yang Anda bayarkan untuk layanan spesifik yang menjadi sumber klaim.</p>
+              </div>
+
+              <div>
+                <h2 class="font-headline-md text-headline-md text-on-surface mb-4 flex items-center gap-2"><span class="text-primary-container font-bold">06.</span> Perubahan Ketentuan</h2>
+                <p>Kami berhak untuk mengubah atau memperbarui Syarat dan Ketentuan ini kapan saja. Perubahan akan berlaku efektif segera setelah dipublikasikan di halaman ini. Penggunaan layanan secara berkelanjutan setelah perubahan dianggap sebagai persetujuan Anda terhadap ketentuan yang diperbarui.</p>
+              </div>
+
+              <div class="bg-inverse-surface text-inverse-on-surface p-8 rounded-xl mt-12">
+                <h3 class="font-headline-md text-headline-md text-primary-container mb-4">Hubungi Kami</h3>
+                <p>Untuk pertanyaan lebih lanjut mengenai Syarat & Ketentuan ini, silakan hubungi:</p>
+                <ul class="mt-4 space-y-2">
+                  <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-primary-container">email</span> haisen.bussines@gmail.com</li>
+                  <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-primary-container">phone</span> +62 851-6666-2385</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-inverse-surface text-inverse-on-surface py-12 px-margin-mobile md:px-margin-desktop">
+      <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          <div class="md:col-span-2">
+            <img src="logo.png" alt="Haisen Official logo" class="h-12 w-auto mb-4" />
+            <p class="font-body-md text-body-md text-inverse-on-surface/60 max-w-sm">Penyedia layanan digital profesional untuk kebutuhan bisnis modern.</p>
+          </div>
+          <div>
+            <h4 class="font-headline-md text-headline-md text-inverse-on-surface mb-4">Layanan</h4>
+            <ul class="space-y-2 text-inverse-on-surface/60">
+              <li class="font-body-md text-body-md">Pengembangan Software</li>
+              <li class="font-body-md text-body-md">Foto & Videografi</li>
+              <li class="font-body-md text-body-md">Event Digital Solution</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-headline-md text-headline-md text-inverse-on-surface mb-4">Legal</h4>
+            <ul class="space-y-2 text-inverse-on-surface/60">
+              <li><a class="font-body-md text-body-md hover:text-primary-container transition-colors cursor-pointer" onclick="navigateTo('logo')">Brand Logo</a></li>
+              <li><a class="font-body-md text-body-md hover:text-primary-container transition-colors cursor-pointer" onclick="navigateTo('privacy')">Kebijakan Privasi</a></li>
+              <li><a class="font-body-md text-body-md hover:text-primary-container transition-colors cursor-pointer" onclick="navigateTo('terms')">Syarat & Ketentuan</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-inverse-on-surface/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p class="font-label-bold text-label-sm text-inverse-on-surface/40 uppercase tracking-widest">© 2024 Haisen Bisnis. All rights reserved.</p>
+          <p class="font-label-sm text-inverse-on-surface/40 flex items-center gap-1">Made with <span class="material-symbols-outlined text-primary-container text-[16px]">favorite</span> by Haisen Team</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // 1. SPA Router Logic
+      function navigateTo(pageId, scrollToId = null) {
+        // Sembunyikan semua halaman
+        document.querySelectorAll('.page-section').forEach(p => {
+          p.style.display = 'none';
+          // Reset animasi agar bisa diputar ulang
+          p.querySelectorAll('[data-animate]').forEach(el => {
+            el.classList.remove('animate-fade-in-up', 'animate-fade-in-left', 'animate-fade-in-right');
+            el.classList.add('opacity-0');
+          });
+        });
+
+        // Tampilkan halaman tujuan
+        const targetPage = document.getElementById('page-' + pageId);
+        targetPage.style.display = 'block';
+        window.scrollTo(0, 0);
+
+        // Trigger ulang animasi scroll untuk halaman baru
+        setTimeout(() => {
+          const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                const el = entry.target;
+                const anim = el.getAttribute('data-animate');
+                if(anim) {
+                  el.classList.add('animate-' + anim);
+                  observer.unobserve(el);
+                }
+              }
+            });
+          }, { threshold: 0.1 });
+          targetPage.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+        }, 50);
+
+        // Jika ada request scroll ke section tertentu
+        if (scrollToId) {
+          setTimeout(() => {
+            document.getElementById(scrollToId).scrollIntoView({ behavior: 'smooth' });
+          }, 100);
+        }
+
+        closeMenu(); // Tutup mobile menu jika terbuka
+      }
+
+      function goToSection(sectionId) {
+        const homePage = document.getElementById('page-home');
+        if (homePage.style.display === 'none') {
+          navigateTo('home', sectionId);
+        } else {
+          document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+        closeMenu();
+      }
+
+      // 2. Logika Efek Scroll Navbar
+      const topNav = document.getElementById('top-nav');
+      const navContainer = document.getElementById('nav-container');
+
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 30) {
+          topNav.classList.remove('top-0', 'w-full', 'max-w-full', 'rounded-none', 'border-transparent', 'border-b', 'bg-surface/80');
+          topNav.classList.add('top-4', 'w-[95%]', 'max-w-4xl', 'rounded-[2rem]', 'border', 'border-outline-variant', 'shadow-[0_8px_32px_rgba(0,0,0,0.15)]', 'bg-surface/90' );
+          navContainer.classList.remove('h-20', 'px-margin-mobile', 'md:px-margin-desktop');
+          navContainer.classList.add('h-16', 'px-6', 'md:px-8');
+        } else {
+          topNav.classList.add('top-0', 'w-full', 'max-w-full', 'rounded-none', 'border-transparent', 'border-b', 'bg-surface/80');
+          topNav.classList.remove('top-4', 'w-[95%]', 'max-w-4xl', 'rounded-[2rem]', 'border', 'border-outline-variant', 'shadow-[0_8px_32px_rgba(0,0,0,0.15)]', 'bg-surface/90');
+          navContainer.classList.add('h-20', 'px-margin-mobile', 'md:px-margin-desktop');
+          navContainer.classList.remove('h-16', 'px-6', 'md:px-8');
+        }
+      });
+
+      // 3. Logika Mobile Pop-up Menu
+      const btnOpen = document.getElementById('mobile-menu-open');
+      const btnClose = document.getElementById('mobile-menu-close');
+      const popup = document.getElementById('mobile-popup');
+      const mobileLinks = document.querySelectorAll('.mobile-link-anim');
+
+      function openMenu() {
+        popup.classList.remove('opacity-0', 'pointer-events-none', 'scale-95');
+        popup.classList.add('opacity-100', 'pointer-events-auto', 'scale-100');
+        document.body.classList.add('menu-open'); 
+        mobileLinks.forEach((link, index) => {
+          setTimeout(() => { link.classList.add('show'); }, 100 + (index * 80)); 
+        });
+      }
+
+      function closeMenu() {
+        popup.classList.remove('opacity-100', 'pointer-events-auto', 'scale-100');
+        popup.classList.add('opacity-0', 'pointer-events-none', 'scale-95');
+        document.body.classList.remove('menu-open'); 
+        mobileLinks.forEach(link => { link.classList.remove('show'); });
+      }
+
+      btnOpen.addEventListener('click', openMenu);
+      btnClose.addEventListener('click', closeMenu);
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && popup.classList.contains('opacity-100')) closeMenu();
+      });
+
+      // 4. Script Animasi on Scroll (Initial Load for Home)
+      document.addEventListener("DOMContentLoaded", function() {
+        const observerOptions = { root: null, rootMargin: "0px", threshold: 0.1 };
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const element = entry.target;
+              const animationClass = element.getAttribute('data-animate');
+              if (animationClass) {
+                element.classList.add('animate-' + animationClass);
+                observer.unobserve(element);
+              }
+            }
+          });
+        }, observerOptions);
+
+        document.querySelectorAll('#page-home [data-animate]').forEach(el => observer.observe(el));
+      });
+    </script>
+  </body>
+</html>

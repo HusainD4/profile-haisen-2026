@@ -1,0 +1,44 @@
+<!-- NAVBAR -->
+<nav class="fixed z-50 left-1/2 -translate-x-1/2 top-0 w-full max-w-full rounded-none bg-surface/80 backdrop-blur-2xl border-b border-transparent apple-transition" id="top-nav">
+  <div class="flex justify-between items-center w-full h-20 px-margin-mobile md:px-margin-desktop apple-transition" id="nav-container">
+    <a href="{{ url_for('home') }}" class="font-display-lg text-headline-md md:text-[28px] font-black italic tracking-tighter text-primary hover:scale-105 transition-transform duration-300 cursor-pointer">
+      HAISEN
+    </a>
+
+    <div class="hidden md:flex gap-8 items-center h-full">
+      <a href="{{ url_for('home') }}" class="nav-link-hover font-body-md text-sm uppercase font-bold transition-colors cursor-pointer {% if request.endpoint == 'home' %}active text-primary{% else %}text-on-surface-variant hover:text-primary{% endif %}">Home</a>
+      <a href="{{ url_for('about') }}" class="nav-link-hover font-body-md text-sm uppercase font-bold transition-colors cursor-pointer {% if request.endpoint == 'about' %}active text-primary{% else %}text-on-surface-variant hover:text-primary{% endif %}">About</a>
+      <a href="{{ url_for('produk') }}" class="nav-link-hover font-body-md text-sm uppercase font-bold transition-colors cursor-pointer {% if request.endpoint in ['produk', 'detail_produk'] %}active text-primary{% else %}text-on-surface-variant hover:text-primary{% endif %}">Services & Produk</a>
+      <a href="{{ url_for('cek_pesanan') }}" class="nav-link-hover font-body-md text-sm uppercase font-bold transition-colors cursor-pointer {% if request.endpoint == 'cek_pesanan' %}active text-primary{% else %}text-on-surface-variant hover:text-primary{% endif %}">Cek Pesanan</a>
+      <a href="{{ url_for('logo') }}" class="nav-link-hover font-body-md text-sm uppercase font-bold transition-colors cursor-pointer {% if request.endpoint == 'logo' %}active text-primary{% else %}text-on-surface-variant hover:text-primary{% endif %}">Logo</a>
+    </div>
+
+    <a href="{{ url_for('contact') }}" class="hidden md:flex bg-primary-container text-on-primary-container hover:bg-primary hover:text-on-primary transition-all duration-300 px-6 py-2.5 rounded-full font-label-bold text-label-bold uppercase shadow-lg shadow-primary-container/30 hover:-translate-y-0.5 active:scale-95 items-center gap-2 {% if request.endpoint == 'contact' %}ring-2 ring-primary{% endif %}">
+      Contact Us
+    </a>
+
+    <button id="mobile-menu-open" type="button" aria-label="Buka Menu" class="md:hidden text-on-surface hover:text-primary transition-colors p-2 active:scale-90 outline-none">
+      <span class="material-symbols-outlined text-[32px]">menu</span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU POPUP -->
+<div id="mobile-popup" class="fixed inset-0 z-[100] bg-surface/95 backdrop-blur-2xl opacity-0 pointer-events-none scale-95 transition-all duration-500 flex flex-col items-center justify-center">
+  <button id="mobile-menu-close" type="button" aria-label="Tutup Menu" class="absolute top-6 right-6 text-on-surface hover:text-primary transition-all duration-300 p-2 hover:rotate-90 active:scale-90 outline-none">
+    <span class="material-symbols-outlined text-[40px]">close</span>
+  </button>
+  <div class="flex flex-col items-center gap-8 w-full px-8">
+    <a href="{{ url_for('home') }}" class="mobile-link-anim font-display-lg text-headline-md uppercase italic font-black transition-colors {% if request.endpoint == 'home' %}text-primary{% else %}text-on-surface hover:text-primary{% endif %}">Home</a>
+    <a href="{{ url_for('about') }}" class="mobile-link-anim font-display-lg text-headline-md uppercase italic font-black transition-colors {% if request.endpoint == 'about' %}text-primary{% else %}text-on-surface hover:text-primary{% endif %}">About</a>
+    <a href="{{ url_for('produk') }}" class="mobile-link-anim font-display-lg text-headline-md uppercase italic font-black transition-colors {% if request.endpoint in ['produk', 'detail_produk'] %}text-primary{% else %}text-on-surface hover:text-primary{% endif %}">Services & Produk</a>
+    <a href="{{ url_for('cek_pesanan') }}" class="mobile-link-anim font-display-lg text-headline-md uppercase italic font-black transition-colors {% if request.endpoint == 'cek_pesanan' %}text-primary{% else %}text-on-surface hover:text-primary{% endif %}">Cek Pesanan</a>
+    <a href="{{ url_for('logo') }}" class="mobile-link-anim font-display-lg text-headline-md uppercase italic font-black transition-colors {% if request.endpoint == 'logo' %}text-primary{% else %}text-on-surface hover:text-primary{% endif %}">Logo</a>
+    
+    <div class="mobile-link-anim w-16 h-1 bg-outline-variant rounded-full my-2"></div>
+
+    <a href="{{ url_for('contact') }}" class="mobile-link-anim w-full max-w-xs bg-primary-container text-on-primary-container font-label-bold text-lg uppercase py-4 rounded-full hover:bg-primary hover:text-on-primary shadow-xl transition-all active:scale-95 flex items-center justify-center gap-2">
+      Contact Us <span class="material-symbols-outlined">arrow_forward</span>
+    </a>
+  </div>
+</div>

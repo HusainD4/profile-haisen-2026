@@ -1,0 +1,243 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="py-16 px-margin-mobile md:px-margin-desktop bg-surface min-h-screen flex items-start justify-center">
+  <div class="max-w-4xl w-full mx-auto">
+    
+    <!-- HEADER -->
+    <div id="header-title">
+      <h1 class="font-display-lg-mobile text-3xl md:text-4xl uppercase font-black text-on-surface mb-2">Formulir Pemesanan & Pembayaran</h1>
+      <p class="text-on-surface-variant mb-8 text-sm">Pembayaran diproses secara instan di dalam halaman ini melalui Payment Gateway resmi terenkripsi.</p>
+    </div>
+
+    <!-- FORMULIR PEMESANAN (Akan disembunyikan saat pembayaran berhasil dibuat) -->
+    <form id="form-checkout" class="grid grid-cols-1 md:grid-cols-12 gap-8 transition-all duration-500">
+      
+      <!-- DATA PEMESAN & PRODUK -->
+      <div class="md:col-span-7 bg-surface-container-low p-6 md:p-8 rounded-2xl border border-outline-variant space-y-6 shadow-sm">
+        <h2 class="font-bold text-xl border-b pb-4">1. Data Pemesan / Instansi</h2>
+        
+        <div>
+          <label class="block font-label-bold text-sm text-on-surface mb-2">Nama Lengkap / Nama Perusahaan <span class="text-error">*</span></label>
+          <input type="text" name="nama" required placeholder="Masukkan nama lengkap atau instansi" class="w-full bg-surface border border-outline rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors" />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block font-label-bold text-sm text-on-surface mb-2">Alamat Email <span class="text-error">*</span></label>
+            <input type="email" name="email" required placeholder="email@instansi.com" class="w-full bg-surface border border-outline rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors" />
+          </div>
+          <div>
+            <label class="block font-label-bold text-sm text-on-surface mb-2">Nomor WhatsApp <span class="text-error">*</span></label>
+            <input type="tel" name="whatsapp" required placeholder="08516666xxxx" class="w-full bg-surface border border-outline rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-label-bold text-sm text-on-surface mb-2">Pilih Layanan / Paket Produk <span class="text-error">*</span></label>
+          <select name="produk_id" required class="w-full bg-surface border border-outline rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors cursor-pointer">
+            <option value="">-- Pilih Layanan Haisen Official --</option>
+            <optgroup label="Pengembangan Software">
+              <option value="company-profile" {% if pilihan_produk == 'company-profile' %}selected{% endif %}>Website Company Profile</option>
+              <option value="ecommerce" {% if pilihan_produk == 'ecommerce' %}selected{% endif %}>Website E-Commerce</option>
+              <option value="mobile-app" {% if pilihan_produk == 'mobile-app' %}selected{% endif %}>Aplikasi Mobile iOS & Android</option>
+              <option value="dashboard-api" {% if pilihan_produk == 'dashboard-api' %}selected{% endif %}>Dashboard Admin & API System</option>
+            </optgroup>
+            <optgroup label="Foto & Videografi">
+              <option value="eo-seminar" {% if pilihan_produk == 'eo-seminar' %}selected{% endif %}>Dokumentasi EO & Seminar</option>
+              <option value="wedding-graduation" {% if pilihan_produk == 'wedding-graduation' %}selected{% endif %}>Pernikahan & Wisuda</option>
+              <option value="running-gathering" {% if pilihan_produk == 'running-gathering' %}selected{% endif %}>Running Event & Gathering</option>
+              <option value="drone-aerial" {% if pilihan_produk == 'drone-aerial' %}selected{% endif %}>Drone Aerial Photography</option>
+            </optgroup>
+            <optgroup label="Event Digital Solution">
+              <option value="qr-checkin" {% if pilihan_produk == 'qr-checkin' %}selected{% endif %}>QR Code Check-in & E-Ticket</option>
+              <option value="live-monitoring" {% if pilihan_produk == 'live-monitoring' %}selected{% endif %}>Live Participant Monitoring</option>
+              <option value="rfid-timing" {% if pilihan_produk == 'rfid-timing' %}selected{% endif %}>Leaderboard & RFID Timing System</option>
+              <option value="digital-cert" {% if pilihan_produk == 'digital-cert' %}selected{% endif %}>Sertifikat Digital & Mass Blast</option>
+            </optgroup>
+            <optgroup label="Paket Bundling Spesial">
+              <option value="bundling-sport" {% if pilihan_produk == 'bundling-sport' %}selected{% endif %}>Paket Sport / Running Event All-in-One</option>
+              <option value="bundling-corporate" {% if pilihan_produk == 'bundling-corporate' %}selected{% endif %}>Paket Corporate Seminar Pro</option>
+              <option value="bundling-wedding" {% if pilihan_produk == 'bundling-wedding' %}selected{% endif %}>Paket Digital Wedding</option>
+            </optgroup>
+          </select>
+        </div>
+      </div>
+
+      <!-- METODE PEMBAYARAN -->
+      <div class="md:col-span-5 bg-surface-container-low p-6 md:p-8 rounded-2xl border border-outline-variant flex flex-col justify-between shadow-sm">
+        <div class="space-y-6">
+          <h2 class="font-bold text-xl border-b pb-4">2. Metode Pembayaran</h2>
+          
+          <div class="space-y-3">
+            <label class="flex items-center gap-3 p-4 bg-surface rounded-xl border border-outline cursor-pointer hover:border-primary transition-all">
+              <input type="radio" name="payment_method" value="qris" checked class="text-primary focus:ring-primary w-5 h-5" />
+              <div class="font-label-bold text-sm">QRIS (OVO, Gopay, Dana, dll)</div>
+            </label>
+            <label class="flex items-center gap-3 p-4 bg-surface rounded-xl border border-outline cursor-pointer hover:border-primary transition-all">
+              <input type="radio" name="payment_method" value="bca" class="text-primary focus:ring-primary w-5 h-5" />
+              <div class="font-label-bold text-sm">BCA Virtual Account</div>
+            </label>
+            <label class="flex items-center gap-3 p-4 bg-surface rounded-xl border border-outline cursor-pointer hover:border-primary transition-all">
+              <input type="radio" name="payment_method" value="mandiri" class="text-primary focus:ring-primary w-5 h-5" />
+              <div class="font-label-bold text-sm">Mandiri Bill Payment</div>
+            </label>
+            <label class="flex items-center gap-3 p-4 bg-surface rounded-xl border border-outline cursor-pointer hover:border-primary transition-all">
+              <input type="radio" name="payment_method" value="bni" class="text-primary focus:ring-primary w-5 h-5" />
+              <div class="font-label-bold text-sm">BNI Virtual Account</div>
+            </label>
+          </div>
+        </div>
+
+        <div class="mt-8 pt-6 border-t space-y-4">
+          <button type="submit" id="btn-bayar" class="w-full bg-primary text-primary-container font-label-bold text-sm uppercase py-4 rounded-full hover:scale-105 active:scale-95 transition-all shadow-xl flex items-center justify-center gap-2">
+            <span class="material-symbols-outlined">lock</span> <span id="label-btn">Proses Pembayaran</span>
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <!-- UI HASIL PEMBAYARAN DINAMIS (Muncul saat form disubmit) -->
+    <div id="payment-result-ui" class="hidden w-full max-w-2xl mx-auto bg-surface-container-low p-8 rounded-2xl border border-outline-variant text-center shadow-2xl animate-fade-in-up">
+      <div class="inline-block bg-primary-container/20 text-primary p-4 rounded-full mb-4">
+        <span class="material-symbols-outlined text-[40px]">receipt_long</span>
+      </div>
+      <h2 class="font-display-lg-mobile text-2xl font-black text-on-surface mb-2">Menunggu Pembayaran</h2>
+      <p class="text-on-surface-variant text-sm mb-8">Selesaikan pembayaran Anda menggunakan instruksi resmi di bawah ini.</p>
+      
+      <!-- BOX QRIS -->
+      <div id="qris-box" class="hidden flex flex-col items-center justify-center">
+         <img id="qris-image" src="" alt="QRIS Code" class="w-64 h-64 border-[10px] border-white shadow-lg rounded-xl mb-4 bg-white" />
+         <p class="font-label-bold text-sm">Scan QR Code ini menggunakan aplikasi M-Banking atau E-Wallet Anda.</p>
+      </div>
+      
+      <!-- BOX VIRTUAL ACCOUNT -->
+      <div id="va-box" class="hidden flex flex-col items-center space-y-4 w-full">
+          <div class="w-full bg-surface p-6 rounded-xl border border-outline text-left">
+              <p class="text-xs text-on-surface-variant uppercase font-label-bold mb-1">Bank Tujuan</p>
+              <p id="va-bank-name" class="font-bold text-xl text-on-surface mb-4">BCA</p>
+              
+              <div id="va-number-container">
+                  <p class="text-xs text-on-surface-variant uppercase font-label-bold mb-1">Nomor Virtual Account / VA</p>
+                  <div class="flex justify-between items-center bg-background px-4 py-3 rounded-lg border border-outline mb-4">
+                      <span id="va-number" class="font-mono font-bold text-2xl tracking-widest text-primary"></span>
+                      <button type="button" onclick="copyToClipboard('va-number')" class="text-primary hover:text-primary-fixed-dim transition-colors" title="Salin Nomor">
+                        <span class="material-symbols-outlined">content_copy</span>
+                      </button>
+                  </div>
+              </div>
+
+              <!-- KHUSUS MANDIRI BILLER -->
+              <div id="mandiri-biller-container" class="hidden">
+                  <p class="text-xs text-on-surface-variant uppercase font-label-bold mb-1">Biller Code (Kode Perusahaan)</p>
+                  <div class="flex justify-between items-center bg-background px-4 py-3 rounded-lg border border-outline mb-4">
+                      <span id="mandiri-biller" class="font-mono font-bold text-2xl tracking-widest text-primary"></span>
+                      <button type="button" onclick="copyToClipboard('mandiri-biller')" class="text-primary transition-colors"><span class="material-symbols-outlined">content_copy</span></button>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <!-- TOTAL & TOMBOL LANJUTAN -->
+      <div class="mt-8 pt-6 border-t w-full text-center">
+          <p class="text-xs text-on-surface-variant uppercase font-label-bold mb-1">Total Pembayaran</p>
+          <p id="total-amount" class="font-black text-4xl text-primary mb-8"></p>
+          
+          <a id="btn-cek-status" href="#" class="inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-primary text-primary-container font-label-bold uppercase px-12 py-4 rounded-full hover:scale-105 transition-all shadow-xl">
+              <span class="material-symbols-outlined">sync</span> Saya Sudah Bayar
+          </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FUNGSI JAVASCRIPT UNTUK DYNAMIC UI & CORE API -->
+<script>
+  const formatRupiah = (angka) => {
+    return new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 }).format(angka);
+  };
+
+  const copyToClipboard = (elementId) => {
+    const text = document.getElementById(elementId).innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      alert("Nomor berhasil disalin!");
+    }).catch(err => console.error("Gagal menyalin teks", err));
+  };
+
+  document.getElementById("form-checkout").addEventListener("submit", async function(e) {
+    e.preventDefault();
+    
+    const btnBayar = document.getElementById("btn-bayar");
+    const labelBtn = document.getElementById("label-btn");
+    const iconBtn = btnBayar.querySelector(".material-symbols-outlined");
+
+    // Loading State
+    btnBayar.disabled = true;
+    btnBayar.classList.add("opacity-50", "cursor-not-allowed");
+    iconBtn.textContent = "sync";
+    iconBtn.classList.add("animate-spin");
+    labelBtn.textContent = "Menghubungkan Server...";
+
+    const formData = new FormData(this);
+
+    try {
+      const response = await fetch("{{ url_for('checkout') }}", {
+        method: "POST",
+        body: formData
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.status === "success") {
+        // 1. Sembunyikan Form, Tampilkan UI Hasil Pembayaran
+        document.getElementById("form-checkout").classList.add("hidden");
+        document.getElementById("header-title").classList.add("hidden");
+        document.getElementById("payment-result-ui").classList.remove("hidden");
+
+        // 2. Set Informasi Umum & Tautan Callback Status Real-Time
+        document.getElementById("total-amount").textContent = formatRupiah(result.gross_amount);
+        document.getElementById("btn-cek-status").href = "/status-pembayaran/" + result.order_id;
+
+        // 3. Tampilkan Komponen Spesifik Berdasarkan Metode
+        if (result.payment_type === 'qris') {
+          document.getElementById("qris-box").classList.remove("hidden");
+          document.getElementById("qris-box").classList.add("flex");
+          document.getElementById("qris-image").src = result.qr_url;
+        } 
+        else if (result.payment_type === 'bca' || result.payment_type === 'bni') {
+          document.getElementById("va-box").classList.remove("hidden");
+          document.getElementById("va-box").classList.add("flex");
+          document.getElementById("va-bank-name").textContent = result.bank + " VIRTUAL ACCOUNT";
+          document.getElementById("va-number").textContent = result.va_number;
+        }
+        else if (result.payment_type === 'mandiri') {
+          document.getElementById("va-box").classList.remove("hidden");
+          document.getElementById("va-box").classList.add("flex");
+          document.getElementById("va-bank-name").textContent = "MANDIRI BILL PAYMENT";
+          document.getElementById("va-number").textContent = result.bill_key;
+          
+          document.getElementById("mandiri-biller-container").classList.remove("hidden");
+          document.getElementById("mandiri-biller").textContent = result.biller_code;
+        }
+
+      } else {
+        // Reset tombol dan tampilkan Error
+        alert(result.error || "Gagal memproses pesanan di Midtrans.");
+        btnBayar.disabled = false;
+        btnBayar.classList.remove("opacity-50", "cursor-not-allowed");
+        iconBtn.textContent = "lock";
+        iconBtn.classList.remove("animate-spin");
+        labelBtn.textContent = "Proses Pembayaran";
+      }
+    } catch (error) {
+      alert("Gagal terhubung ke server. Silakan periksa koneksi internet Anda.");
+      btnBayar.disabled = false;
+      btnBayar.classList.remove("opacity-50", "cursor-not-allowed");
+      iconBtn.textContent = "lock";
+      iconBtn.classList.remove("animate-spin");
+      labelBtn.textContent = "Proses Pembayaran";
+    }
+  });
+</script>
+{% endblock %}

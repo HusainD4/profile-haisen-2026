@@ -1,0 +1,279 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- CATALOG HERO -->
+<section class="py-16 px-margin-mobile md:px-margin-desktop bg-inverse-surface text-inverse-on-surface slant-clip">
+  <div class="max-w-7xl mx-auto text-center py-8">
+    <span class="inline-block bg-primary-container text-on-primary-container px-4 py-1 rounded-sm font-label-bold text-xs uppercase mb-4 tracking-widest shadow-lg">Katalog Resmi Haisen Official</span>
+    <h1 class="font-display-lg-mobile md:font-display-lg text-4xl md:text-6xl uppercase mb-4 font-extrabold">
+      SOLUSI DIGITAL <span class="text-primary-container italic">TERINTEGRASI</span>
+    </h1>
+    <p class="font-body-lg text-inverse-on-surface/70 max-w-3xl mx-auto text-sm md:text-base">
+      Jelajahi layanan pengembangan perangkat lunak modern, produksi visual sinematik, serta sistem manajemen event berbasis teknologi interaktif.
+    </p>
+  </div>
+</section>
+
+<!-- CATEGORY A: SOFTWARE DEVELOPMENT -->
+<section id="software" class="py-section-gap px-margin-mobile md:px-margin-desktop bg-surface">
+  <div class="max-w-7xl mx-auto">
+    <div class="border-l-4 border-primary-container pl-4 mb-12">
+      <h2 class="font-bold text-2xl text-on-surface uppercase">A. Pengembangan Software</h2>
+      <p class="text-sm text-on-surface-variant">Arsitektur modern, performa tangguh, dan standar keamanan terbaik.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="bg-surface-container-low rounded-xl p-6 flex flex-col justify-between shadow-md hover:shadow-xl transition-all border border-transparent hover:border-primary">
+        <div>
+          <div class="bg-primary text-primary-container w-12 h-12 rounded-full flex items-center justify-center mb-4"><span class="material-symbols-outlined">language</span></div>
+          <h3 class="font-bold text-lg mb-2">Website Company Profile</h3>
+          <p class="text-xs text-on-surface-variant mb-4">UI/UX eksklusif, mobile friendly, integrasi CMS, optimasi SEO dasar, & SSL security.</p>
+        </div>
+        <div>
+          <p class="font-label-bold text-[10px] text-on-surface-variant uppercase">Mulai Dari</p>
+          <p class="font-bold text-lg text-primary mb-4">Rp 1.500.000 <span class="text-[10px] font-normal">- Rp 15 Juta</span></p>
+          <a href="{{ url_for('detail_produk', id='company-profile') }}" class="block text-center bg-primary text-primary-container font-label-bold text-xs uppercase py-3 rounded-full hover:bg-on-primary hover:text-primary transition-all border border-primary">Detail Produk</a>
+        </div>
+      </div>
+
+      <div class="bg-surface-container-low rounded-xl p-6 flex flex-col justify-between shadow-md hover:shadow-xl transition-all border border-transparent hover:border-primary">
+        <div>
+          <div class="bg-primary text-primary-container w-12 h-12 rounded-full flex items-center justify-center mb-4"><span class="material-symbols-outlined">shopping_cart</span></div>
+          <h3 class="font-bold text-lg mb-2">Website E-Commerce</h3>
+          <p class="text-xs text-on-surface-variant mb-4">Keranjang belanja dinamis, integrasi Payment Gateway, ongkir otomatis, kupon & inventaris.</p>
+        </div>
+        <div>
+          <p class="font-label-bold text-[10px] text-on-surface-variant uppercase">Mulai Dari</p>
+          <p class="font-bold text-lg text-primary mb-4">Rp 5.000.000 <span class="text-[10px] font-normal">- Rp 25 Juta</span></p>
+          <a href="{{ url_for('detail_produk', id='ecommerce') }}" class="block text-center bg-primary text-primary-container font-label-bold text-xs uppercase py-3 rounded-full hover:bg-on-primary hover:text-primary transition-all border border-primary">Detail Produk</a>
+        </div>
+      </div>
+
+      <div class="bg-surface-container-low rounded-xl p-6 flex flex-col justify-between shadow-md hover:shadow-xl transition-all border border-transparent hover:border-primary">
+        <div>
+          <div class="bg-primary text-primary-container w-12 h-12 rounded-full flex items-center justify-center mb-4"><span class="material-symbols-outlined">smartphone</span></div>
+          <h3 class="font-bold text-lg mb-2">Aplikasi Mobile iOS/Android</h3>
+          <p class="text-xs text-on-surface-variant mb-4">Pengembangan Native/Cross-platform (Flutter), push notification, API integration, & rilis store.</p>
+        </div>
+        <div>
+          <p class="font-label-bold text-[10px] text-on-surface-variant uppercase">Mulai Dari</p>
+          <p class="font-bold text-lg text-primary mb-4">Rp 4.000.000 <span class="text-[10px] font-normal">- Rp 25 Juta+</span></p>
+          <a href="{{ url_for('detail_produk', id='mobile-app') }}" class="block text-center bg-primary text-primary-container font-label-bold text-xs uppercase py-3 rounded-full hover:bg-on-primary hover:text-primary transition-all border border-primary">Detail Produk</a>
+        </div>
+      </div>
+
+      <div class="bg-surface-container-low rounded-xl p-6 flex flex-col justify-between shadow-md hover:shadow-xl transition-all border border-transparent hover:border-primary">
+        <div>
+          <div class="bg-primary text-primary-container w-12 h-12 rounded-full flex items-center justify-center mb-4"><span class="material-symbols-outlined">api</span></div>
+          <h3 class="font-bold text-lg mb-2">Dashboard Admin & API</h3>
+          <p class="text-xs text-on-surface-variant mb-4">Sistem ERP/CRM kustom, Role-Based Access (RBAC), RESTful API/GraphQL, & export laporan.</p>
+        </div>
+        <div>
+          <p class="font-label-bold text-[10px] text-on-surface-variant uppercase">Mulai Dari</p>
+          <p class="font-bold text-lg text-primary mb-4">Rp 2.000.000 <span class="text-[10px] font-normal">- Rp 20 Juta</span></p>
+          <a href="{{ url_for('detail_produk', id='dashboard-api') }}" class="block text-center bg-primary text-primary-container font-label-bold text-xs uppercase py-3 rounded-full hover:bg-on-primary hover:text-primary transition-all border border-primary">Detail Produk</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORY B: CREATIVE DOCUMENTATION -->
+<section id="creative" class="py-section-gap px-margin-mobile md:px-margin-desktop bg-surface-container-low">
+  <div class="max-w-7xl mx-auto">
+    <div class="border-l-4 border-secondary-container pl-4 mb-12">
+      <h2 class="font-bold text-2xl text-on-surface uppercase">B. Foto & Videografi Kreatif</h2>
+      <p class="text-sm text-on-surface-variant">Peralatan kamera sinematik, pencahayaan studio, dan kru profesional berpengalaman.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="bg-surface rounded-xl p-6 flex flex-col justify-between shadow-md hover:shadow-xl transition-all border border-transparent hover:border-secondary-container">
+        <div>
+          <div class="bg-tertiary text-on-tertiary w-12 h-12 rounded-full flex items-center justify-center mb-4"><span class="material-symbols-outlined">event_seat</span></div>
+          <h3 class="font-bold text-lg mb-2">Event Organizer & Seminar</h3>
+          <p class="text-xs text-on-surface-variant mb-4">Liputan foto high-res, video aftermovie highlight (1-3 menit), crew lighting, & raw files cloud.</p>
+        </div>
+        <div>
+          <p class="font-label-bold text-[10px] text-on-surface-variant uppercase">Mulai Dari</p>
+          <p class="font-bold text-lg text-primary mb-4">Rp 350.000 <span class="text-[10px] font-normal">- Rp 12 Juta</span></p>
+          <a href="{{ url_for('detail_produk', id='eo-seminar') }}" class="block text-center bg-surface-container-low text-on-surface font-label-bold text-xs uppercase py-3 rounded-full hover:bg-primary hover:text-on-primary transition-all">Detail Produk</a>
+        </div>
+      </div>
+
+      <div class="bg-surface rounded-xl p-6 flex flex-col justify-between shadow-md hover:shadow-xl transition-all border border-transparent hover:border-secondary-container">
+        <div>
+          <div class="bg-tertiary text-on-tertiary w-12 h-12 rounded-full flex items-center justify-center mb-4"><span class="material-symbols-outlined">diversity_1</span></div>
+          <h3 class="font-bold text-lg mb-2">Pernikahan & Wisuda</h3>
+          <p class="text-xs text-on-surface-variant mb-4">Sesi Pre-Wed, cinematic wedding video, teaser TikTok/IG, album kolase, & bingkai premium.</p>
+        </div>
+        <div>
+          <p class="font-label-bold text-[10px] text-on-surface-variant uppercase">Mulai Dari</p>
+          <p class="font-bold text-lg text-primary mb-4">Rp 150.000 <span class="text-[10px] font-normal">- Rp 5 Juta</span></p>
+          <a href="{{ url_for('detail_produk', id='wedding-graduation') }}" class="block text-center bg-surface-container-low text-on-surface font-label-bold text-xs uppercase py-3 rounded-full hover:bg-primary hover:text-on-primary transition-all">Detail Produk</a>
+        </div>
+      </div>
+
+      <div class="bg-surface rounded-xl p-6 flex flex-col justify-between shadow-md hover:shadow-xl transition-all border border-transparent hover:border-secondary-container">
+        <div>
+          <div class="bg-tertiary text-on-tertiary w-12 h-12 rounded-full flex items-center justify-center mb-4"><span class="material-symbols-outlined">directions_run</span></div>
+          <h3 class="font-bold text-lg mb-2">Running Event & Gathering</h3>
+          <p class="text-xs text-on-surface-variant mb-4">Fotografer titik rute strategi (speed shutter), sistem cari foto face recognition / BIB, & aerial drone.</p>
+        </div>
+        <div>
+          <p class="font-label-bold text-[10px] text-on-surface-variant uppercase">Mulai Dari</p>
+          <p class="font-bold text-lg text-primary mb-4">Rp 800.000 <span class="text-[10px] font-normal">- Rp 7 Juta</span></p>
+          <a href="{{ url_for('detail_produk', id='running-gathering') }}" class="block text-center bg-surface-container-low text-on-surface font-label-bold text-xs uppercase py-3 rounded-full hover:bg-primary hover:text-on-primary transition-all">Detail Produk</a>
+        </div>
+      </div>
+
+      <div class="bg-surface rounded-xl p-6 flex flex-col justify-between shadow-md hover:shadow-xl transition-all border border-transparent hover:border-secondary-container">
+        <div>
+          <div class="bg-tertiary text-on-tertiary w-12 h-12 rounded-full flex items-center justify-center mb-4"><span class="material-symbols-outlined">flight</span></div>
+          <h3 class="font-bold text-lg mb-2">Drone & Aerial Video</h3>
+          <p class="text-xs text-on-surface-variant mb-4">Visual udara beresolusi 4K/60fps, pilot berlisensi resmi, color grading sinematik untuk mapping event.</p>
+        </div>
+        <div>
+          <p class="font-label-bold text-[10px] text-on-surface-variant uppercase">Mulai Dari</p>
+          <p class="font-bold text-lg text-primary mb-4">Rp 1.000.000 <span class="text-[10px] font-normal">- Rp 3 Juta / hari</span></p>
+          <a href="{{ url_for('detail_produk', id='drone-aerial') }}" class="block text-center bg-surface-container-low text-on-surface font-label-bold text-xs uppercase py-3 rounded-full hover:bg-primary hover:text-on-primary transition-all">Detail Produk</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORY C: EVENT DIGITAL SOLUTIONS -->
+<section id="event" class="py-section-gap px-margin-mobile md:px-margin-desktop bg-surface">
+  <div class="max-w-7xl mx-auto">
+    <div class="border-l-4 border-tertiary pl-4 mb-12">
+      <h2 class="font-bold text-2xl text-on-surface uppercase">C. Event Digital Solution (Event Tech)</h2>
+      <p class="text-sm text-on-surface-variant">Solusi SaaS interaktif untuk modernisasi registrasi, pencatatan waktu akurat, dan efisiensi panitia.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="bg-surface-container-low rounded-xl p-6 flex flex-col justify-between shadow-md hover:shadow-xl transition-all border border-transparent hover:border-tertiary">
+        <div>
+          <div class="bg-secondary text-on-secondary w-12 h-12 rounded-full flex items-center justify-center mb-4"><span class="material-symbols-outlined">qr_code_scanner</span></div>
+          <h3 class="font-bold text-lg mb-2">QR Check-in & E-Ticket</h3>
+          <p class="text-xs text-on-surface-variant mb-4">Pengiriman tiket otomatis via WA/Email, scanner check-in cepat (&lt;2 detik), & cetak badge di lokasi.</p>
+        </div>
+        <div>
+          <p class="font-label-bold text-[10px] text-on-surface-variant uppercase">Mulai Dari</p>
+          <p class="font-bold text-lg text-primary mb-4">Rp 800.000 <span class="text-[10px] font-normal">- Rp 7.5 Juta</span></p>
+          <a href="{{ url_for('detail_produk', id='qr-checkin') }}" class="block text-center bg-primary text-primary-container font-label-bold text-xs uppercase py-3 rounded-full hover:bg-on-primary hover:text-primary transition-all border border-primary">Detail Produk</a>
+        </div>
+      </div>
+
+      <div class="bg-surface-container-low rounded-xl p-6 flex flex-col justify-between shadow-md hover:shadow-xl transition-all border border-transparent hover:border-tertiary">
+        <div>
+          <div class="bg-secondary text-on-secondary w-12 h-12 rounded-full flex items-center justify-center mb-4"><span class="material-symbols-outlined">monitoring</span></div>
+          <h3 class="font-bold text-lg mb-2">Live Participant Monitor</h3>
+          <p class="text-xs text-on-surface-variant mb-4">Dasbor pemantauan real-time VIP, tampilan monitor LED di venue, statistik demografi, & export Excel.</p>
+        </div>
+        <div>
+          <p class="font-label-bold text-[10px] text-on-surface-variant uppercase">Mulai Dari</p>
+          <p class="font-bold text-lg text-primary mb-4">Rp 500.000 <span class="text-[10px] font-normal">- Rp 8 Juta</span></p>
+          <a href="{{ url_for('detail_produk', id='live-monitoring') }}" class="block text-center bg-primary text-primary-container font-label-bold text-xs uppercase py-3 rounded-full hover:bg-on-primary hover:text-primary transition-all border border-primary">Detail Produk</a>
+        </div>
+      </div>
+
+      <div class="bg-surface-container-low rounded-xl p-6 flex flex-col justify-between shadow-md hover:shadow-xl transition-all border border-transparent hover:border-tertiary">
+        <div>
+          <div class="bg-secondary text-on-secondary w-12 h-12 rounded-full flex items-center justify-center mb-4"><span class="material-symbols-outlined">timer</span></div>
+          <h3 class="font-bold text-lg mb-2">Leaderboard & RFID Timing</h3>
+          <p class="text-xs text-on-surface-variant mb-4">Pencatatan waktu otomatis lomba lari berakurasi tinggi (chip RFID), live LED scoreboard, & notifikasi WA.</p>
+        </div>
+        <div>
+          <p class="font-label-bold text-[10px] text-on-surface-variant uppercase">Mulai Dari</p>
+          <p class="font-bold text-lg text-primary mb-4">Rp 500.000 <span class="text-[10px] font-normal">- Rp 10 Juta</span></p>
+          <a href="{{ url_for('detail_produk', id='rfid-timing') }}" class="block text-center bg-primary text-primary-container font-label-bold text-xs uppercase py-3 rounded-full hover:bg-on-primary hover:text-primary transition-all border border-primary">Detail Produk</a>
+        </div>
+      </div>
+
+      <div class="bg-surface-container-low rounded-xl p-6 flex flex-col justify-between shadow-md hover:shadow-xl transition-all border border-transparent hover:border-tertiary">
+        <div>
+          <div class="bg-secondary text-on-secondary w-12 h-12 rounded-full flex items-center justify-center mb-4"><span class="material-symbols-outlined">workspace_premium</span></div>
+          <h3 class="font-bold text-lg mb-2">Sertifikat Digital & Blast</h3>
+          <p class="text-xs text-on-surface-variant mb-4">Desain E-Sertifikat dinamis verifikasi QR, penomoran otomatis, distribusi massal WA/Email Blast, & portal unduh.</p>
+        </div>
+        <div>
+          <p class="font-label-bold text-[10px] text-on-surface-variant uppercase">Mulai Dari</p>
+          <p class="font-bold text-lg text-primary mb-4">Rp 500.000 <span class="text-[10px] font-normal">- Rp 3 Juta</span></p>
+          <a href="{{ url_for('detail_produk', id='digital-cert') }}" class="block text-center bg-primary text-primary-container font-label-bold text-xs uppercase py-3 rounded-full hover:bg-on-primary hover:text-primary transition-all border border-primary">Detail Produk</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECIAL BUNDLING PACKAGES -->
+<section id="bundling" class="py-section-gap px-margin-mobile md:px-margin-desktop bg-inverse-surface text-inverse-on-surface">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-12">
+      <span class="inline-block bg-primary-container text-on-primary-container px-4 py-1 rounded-sm font-label-bold text-xs uppercase mb-4 tracking-widest shadow-lg">Penawaran Spesial</span>
+      <h2 class="font-bold text-3xl uppercase mb-4">Paket Bundling Integrasi</h2>
+      <p class="text-sm text-inverse-on-surface/70 max-w-2xl mx-auto">Efisiensi biaya dan kemudahan koordinasi vendor dengan menggabungkan software, dokumentasi, dan teknologi event dalam satu pintu.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Bundling 1 -->
+      <div class="bg-surface text-on-surface rounded-2xl p-8 flex flex-col justify-between shadow-2xl relative overflow-hidden border-2 border-primary-container">
+        <div class="absolute top-0 right-0 bg-primary-container text-on-primary-container px-4 py-1 rounded-bl-lg font-label-bold text-xs uppercase">Hemat 15%</div>
+        <div>
+          <h3 class="font-bold text-xl mb-2">Paket Sport / Running Event</h3>
+          <p class="text-xs text-on-surface-variant mb-6">Solusi All-in-One untuk kelancaran perlombaan lari maraton/5K/10K.</p>
+          <ul class="space-y-3 text-sm mb-8">
+            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-[18px]">check_circle</span> Website Registrasi & Pembayaran Online</li>
+            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-[18px]">check_circle</span> QR Code Check-in & Race Pack (RPC)</li>
+            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-[18px]">check_circle</span> Leaderboard & Timing System RFID di Finish</li>
+            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-[18px]">check_circle</span> Fotografer Rute, Drone, & Video Aftermovie</li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-label-bold text-xs text-on-surface-variant uppercase">Investasi Mulai</p>
+          <p class="font-black text-2xl text-primary mb-6">Rp 25.000.000</p>
+          <a href="{{ url_for('detail_produk', id='bundling-sport') }}" class="block w-full text-center bg-primary text-primary-container font-label-bold uppercase py-4 rounded-full hover:scale-105 transition-transform shadow-lg text-sm">Lihat Detail Paket</a>
+        </div>
+      </div>
+
+      <!-- Bundling 2 -->
+      <div class="bg-surface text-on-surface rounded-2xl p-8 flex flex-col justify-between shadow-xl relative overflow-hidden border border-outline-variant">
+        <div class="absolute top-0 right-0 bg-secondary-container text-on-secondary-container px-4 py-1 rounded-bl-lg font-label-bold text-xs uppercase">Hemat 10%</div>
+        <div>
+          <h3 class="font-bold text-xl mb-2">Corporate Seminar Pro</h3>
+          <p class="text-xs text-on-surface-variant mb-6">Standar profesional untuk konferensi, seminar nasional, dan gathering perusahaan.</p>
+          <ul class="space-y-3 text-sm mb-8">
+            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-[18px]">check_circle</span> Landing Page Acara & Form Registrasi</li>
+            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-[18px]">check_circle</span> QR Code E-Ticket Scanner & Live Attendance</li>
+            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-[18px]">check_circle</span> Dokumentasi Foto Liputan & Video Aftermovie</li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-label-bold text-xs text-on-surface-variant uppercase">Investasi Mulai</p>
+          <p class="font-black text-2xl text-primary mb-6">Rp 15.000.000</p>
+          <a href="{{ url_for('detail_produk', id='bundling-corporate') }}" class="block w-full text-center bg-surface-container-low text-on-surface font-label-bold uppercase py-4 rounded-full hover:bg-primary hover:text-on-primary transition-all text-sm">Lihat Detail Paket</a>
+        </div>
+      </div>
+
+      <!-- Bundling 3 -->
+      <div class="bg-surface text-on-surface rounded-2xl p-8 flex flex-col justify-between shadow-xl relative overflow-hidden border border-outline-variant">
+        <div class="absolute top-0 right-0 bg-tertiary-container text-on-tertiary-container px-4 py-1 rounded-bl-lg font-label-bold text-xs uppercase">Paket Lengkap</div>
+        <div>
+          <h3 class="font-bold text-xl mb-2">Digital Wedding & Celebration</h3>
+          <p class="text-xs text-on-surface-variant mb-6">Perpaduan keanggunan dokumentasi sinematik dan kepraktisan teknologi undangan digital.</p>
+          <ul class="space-y-3 text-sm mb-8">
+            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-[18px]">check_circle</span> Undangan Digital Eksklusif (Website Wedding)</li>
+            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-[18px]">check_circle</span> QR Code Buku Tamu Digital & Suvenir</li>
+            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-[18px]">check_circle</span> Foto Pre-Wed & Video Cinematic Wedding Hari H</li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-label-bold text-xs text-on-surface-variant uppercase">Investasi Mulai</p>
+          <p class="font-black text-2xl text-primary mb-6">Rp 12.500.000</p>
+          <a href="{{ url_for('detail_produk', id='bundling-wedding') }}" class="block w-full text-center bg-surface-container-low text-on-surface font-label-bold uppercase py-4 rounded-full hover:bg-primary hover:text-on-primary transition-all text-sm">Lihat Detail Paket</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

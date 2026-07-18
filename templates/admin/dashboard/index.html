@@ -1,0 +1,58 @@
+{% extends "admin/base_admin.html" %}
+{% block page_title %}Ikhtisar Sistem{% endblock %}
+
+{% block content %}
+<!-- KARTU STATISTIK -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+    <div class="bg-surface-card p-6 rounded-2xl shadow-sm border border-outline flex flex-col justify-between">
+        <div class="flex justify-between items-start mb-4">
+            <div>
+                <p class="text-gray-500 text-sm font-bold uppercase">Total Pendapatan</p>
+                <h3 class="text-2xl font-black text-primary mt-1">{{ stats.pendapatan }}</h3>
+            </div>
+            <div class="bg-green-100 text-green-600 p-2 rounded-lg"><span class="material-symbols-outlined">account_balance_wallet</span></div>
+        </div>
+        <span class="text-xs text-green-600 font-bold flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">trending_up</span> +12% bulan ini</span>
+    </div>
+
+    <div class="bg-surface-card p-6 rounded-2xl shadow-sm border border-outline flex flex-col justify-between">
+        <div class="flex justify-between items-start mb-4">
+            <div>
+                <p class="text-gray-500 text-sm font-bold uppercase">Total Pesanan</p>
+                <h3 class="text-2xl font-black text-primary mt-1">{{ stats.total_pesanan }} <span class="text-sm font-normal text-gray-400">Order</span></h3>
+            </div>
+            <div class="bg-blue-100 text-blue-600 p-2 rounded-lg"><span class="material-symbols-outlined">shopping_cart</span></div>
+        </div>
+    </div>
+
+    <div class="bg-surface-card p-6 rounded-2xl shadow-sm border border-outline flex flex-col justify-between">
+        <div class="flex justify-between items-start mb-4">
+            <div>
+                <p class="text-gray-500 text-sm font-bold uppercase">Menunggu Bayar</p>
+                <h3 class="text-2xl font-black text-primary mt-1">{{ stats.menunggu_pembayaran }} <span class="text-sm font-normal text-gray-400">Tagihan</span></h3>
+            </div>
+            <div class="bg-orange-100 text-orange-600 p-2 rounded-lg"><span class="material-symbols-outlined">pending_actions</span></div>
+        </div>
+    </div>
+
+    <div class="bg-surface-card p-6 rounded-2xl shadow-sm border border-outline flex flex-col justify-between border-b-4 border-b-primary-container">
+        <div class="flex justify-between items-start mb-4">
+            <div>
+                <p class="text-gray-500 text-sm font-bold uppercase">Proyek Aktif</p>
+                <h3 class="text-2xl font-black text-primary mt-1">{{ stats.proyek_aktif }} <span class="text-sm font-normal text-gray-400">Sistem</span></h3>
+            </div>
+            <div class="bg-primary text-primary-container p-2 rounded-lg"><span class="material-symbols-outlined">engineering</span></div>
+        </div>
+        <a href="{{ url_for('admin_pesanan') }}" class="text-xs font-bold hover:underline">Lihat detail proyek &rarr;</a>
+    </div>
+</div>
+
+<!-- INFO TAMBAHAN -->
+<div class="bg-primary text-white p-8 rounded-2xl shadow-md flex items-center justify-between">
+    <div>
+        <h3 class="text-xl font-bold text-primary-container mb-2">Selamat Datang di Haisen Admin Panel</h3>
+        <p class="text-sm opacity-80 max-w-2xl">Seluruh aktivitas administrasi, perubahan status pesanan, dan verifikasi Midtrans dapat dipantau langsung dari dashboard ini. Pastikan Anda melakukan <i>Logout</i> setelah selesai bekerja demi keamanan data klien.</p>
+    </div>
+    <span class="material-symbols-outlined text-[80px] opacity-20 hidden md:block">monitoring</span>
+</div>
+{% endblock %}

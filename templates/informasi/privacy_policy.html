@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="min-h-screen py-16 px-margin-mobile md:px-margin-desktop bg-surface">
+  <div class="max-w-4xl mx-auto">
+    <a href="{{ url_for('home') }}" class="inline-flex items-center gap-2 text-on-surface-variant hover:text-primary font-label-bold mb-12 transition-colors">
+      <span class="material-symbols-outlined">arrow_back</span> Kembali ke Beranda
+    </a>
+    
+    <h1 class="font-display-lg-mobile md:font-display-lg text-4xl md:text-6xl uppercase text-on-surface mb-4 font-extrabold">Kebijakan Privasi</h1>
+    <p class="font-body-lg text-on-surface-variant mb-12">Terakhir diperbarui: Juli 2026</p>
+    
+    <div class="prose max-w-none space-y-8 text-on-surface-variant font-body-md leading-relaxed">
+      <div class="bg-surface-container-low p-6 rounded-xl border-l-4 border-primary-container">
+        <p class="text-on-surface">Di Haisen Official, kami berkomitmen penuh untuk melindungi privasi dan keamanan data Anda. Kebijakan Privasi ini menjelaskan bagaimana kami mengumpulkan, menggunakan, dan mengamankan informasi pribadi Anda.</p>
+      </div>
+
+      <div>
+        <h2 class="font-bold text-xl text-on-surface mb-4 flex items-center gap-2"><span class="text-primary font-bold">01.</span> Informasi yang Kami Kumpulkan</h2>
+        <ul class="list-disc pl-6 space-y-2 text-sm">
+          <li><strong class="text-on-surface">Data Pribadi & Registrasi:</strong> Nama, email, WhatsApp, dan identitas peserta acara.</li>
+          <li><strong class="text-on-surface">Data Transaksi & Pembayaran:</strong> Riwayat pesanan, invoice, dan bukti verifikasi *payment gateway*.</li>
+          <li><strong class="text-on-surface">Data Teknis & Akses:</strong> Alamat IP, jenis peramban, log waktu (*timing chip* RFID), dan analitik interaksi web.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="font-bold text-xl text-on-surface mb-4 flex items-center gap-2"><span class="text-primary font-bold">02.</span> Penggunaan Informasi</h2>
+        <ul class="list-disc pl-6 space-y-2 text-sm">
+          <li>Menyediakan, mengoperasikan, dan memelihara sistem perangkat lunak dan layanan digital.</li>
+          <li>Memproses pemesanan E-Ticket, *check-in* QR Code, dan verifikasi waktu peserta pada kegiatan event.</li>
+          <li>Mengirimkan E-Sertifikat, pembaruan sistem, dan notifikasi via WhatsApp & Email.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="font-bold text-xl text-on-surface mb-4 flex items-center gap-2"><span class="text-primary font-bold">03.</span> Perlindungan Data & Keamanan</h2>
+        <p class="text-sm">Kami menerapkan protokol enkripsi standar industri dan pembatasan hak akses (*Role-Based Access Control*) untuk melindungi data pribadi dari pengungkapan yang tidak sah.</p>
+      </div>
+
+      <div class="bg-inverse-surface text-inverse-on-surface p-8 rounded-xl mt-12">
+        <h3 class="font-bold text-lg text-primary-container mb-4">Hubungi Tim Privasi Kami</h3>
+        <ul class="mt-4 space-y-2 text-sm">
+          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-primary-container">email</span> haisen.bussines@gmail.com</li>
+          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-primary-container">phone</span> +62 851-6666-2385</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="py-16 px-margin-mobile md:px-margin-desktop bg-surface min-h-[80vh] flex items-center justify-center">
+    <div class="max-w-lg w-full bg-surface-container-low p-8 md:p-12 rounded-3xl border border-outline-variant text-center shadow-xl animate-fade-in-up">
+        <div class="inline-block bg-surface-dim text-on-surface-variant p-4 rounded-full mb-6 shadow-md">
+            <span class="material-symbols-outlined text-[64px]">cancel</span>
+        </div>
+        <h1 class="font-display-lg-mobile text-3xl font-black text-on-surface mb-4">Pesanan Dibatalkan</h1>
+        <p class="font-body-md text-on-surface-variant mb-2">Pesanan <strong class="font-mono text-primary">{{ order_id }}</strong> telah dibatalkan.</p>
+        <p class="font-body-md text-sm text-on-surface-variant mb-8">Anda membatalkan pesanan ini, atau sistem kami mendeteksi aktivitas yang tidak valid.</p>
+        
+        <a href="{{ url_for('produk') }}" class="block w-full bg-primary text-primary-container font-label-bold uppercase py-4 rounded-full hover:scale-105 transition-all shadow-md mb-4">
+            Kembali ke Katalog
+        </a>
+        <a href="{{ url_for('home') }}" class="block w-full bg-transparent text-on-surface font-label-bold uppercase py-4 rounded-full border border-outline hover:bg-surface-dim transition-all">
+            Halaman Utama
+        </a>
+    </div>
+</section>
+{% endblock %}

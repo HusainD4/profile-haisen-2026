@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-surface">
+  <div data-animate="fade-in-up" class="opacity-0 max-w-4xl mx-auto text-center">
+    <div class="inline-block bg-primary-container/10 p-4 rounded-full mb-6">
+      <span class="material-symbols-outlined text-primary text-[40px] animate-pulse">mail</span>
+    </div>
+    <h1 class="font-display-lg-mobile md:font-display-lg text-4xl md:text-6xl uppercase text-on-surface mb-6 font-extrabold">
+      HUBUNGI <span class="text-primary italic">KAMI</span>
+    </h1>
+    <p class="font-body-lg text-on-surface-variant mb-12 max-w-2xl mx-auto">
+      Siap untuk memulai proyek digital, konsultasi sistem event, atau layanan dokumentasi Anda? Terhubunglah secara langsung dengan tim Customer Success kami.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto mb-16">
+      <a href="mailto:haisen.bussines@gmail.com" class="group relative flex flex-col items-center justify-center p-8 bg-surface-container-low rounded-2xl hover:bg-primary hover:text-on-primary transition-all duration-300 shadow-lg hover:-translate-y-1">
+        <div class="bg-primary-container text-primary p-4 rounded-full mb-4 group-hover:scale-110 transition-transform">
+          <span class="material-symbols-outlined text-[32px]">email</span>
+        </div>
+        <h3 class="font-bold text-lg mb-2">Email Resmi</h3>
+        <p class="text-sm opacity-75">haisen.bussines@gmail.com</p>
+        <span class="mt-4 font-label-bold text-xs uppercase tracking-wider underline">Kirim Penawaran</span>
+      </a>
+
+      <a href="https://wa.me/6285166662385" target="_blank" class="group relative flex flex-col items-center justify-center p-8 bg-surface-container-low rounded-2xl hover:bg-primary hover:text-on-primary transition-all duration-300 shadow-lg hover:-translate-y-1">
+        <div class="bg-primary-container text-primary p-4 rounded-full mb-4 group-hover:scale-110 transition-transform">
+          <span class="material-symbols-outlined text-[32px]">chat</span>
+        </div>
+        <h3 class="font-bold text-lg mb-2">WhatsApp Konsultasi</h3>
+        <p class="text-sm opacity-75">+62 851-6666-2385</p>
+        <span class="mt-4 font-label-bold text-xs uppercase tracking-wider underline">Chat Langsung</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 px-margin-mobile md:px-margin-desktop bg-inverse-surface text-inverse-on-surface">
+  <div class="max-w-5xl mx-auto text-center">
+    <h2 class="font-headline-lg text-2xl uppercase mb-4 font-bold">Siap Tumbuh Bersama Haisen?</h2>
+    <p class="font-body-md text-inverse-on-surface/70 max-w-2xl mx-auto">
+      Kunjungi website portofolio utama kami di <a href="https://profile.haisen.my.id" target="_blank" class="text-primary-container underline font-bold">profile.haisen.my.id</a> untuk melihat demonstrasi produk dan rekam jejak pekerjaan kami.
+    </p>
+  </div>
+</section>
+{% endblock %}

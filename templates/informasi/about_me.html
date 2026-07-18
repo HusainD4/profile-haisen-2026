@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-surface overflow-hidden">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <div data-animate="fade-in-left" class="opacity-0 order-2 lg:order-1 relative group">
+      <div class="absolute inset-0 bg-primary-container rounded-2xl transform -rotate-3 scale-105 z-0 group-hover:rotate-0 transition-transform duration-500"></div>
+      <img class="relative z-10 w-full h-auto object-cover rounded-2xl shadow-2xl transform transition-transform duration-700 group-hover:scale-105" src="{{ url_for('static', filename='images/pro.png') }}" alt="Team collaboration Haisen Official" />
+    </div>
+    <div data-animate="fade-in-right" class="opacity-0 delay-200 order-1 lg:order-2">
+      <h1 class="font-display-lg-mobile md:font-display-lg text-4xl md:text-6xl uppercase italic text-on-surface mb-6 font-extrabold">
+        TENTANG <br /><span class="text-primary">HAISEN OFFICIAL</span>
+      </h1>
+      <p class="font-body-lg text-on-surface-variant mb-6">
+        Haisen Official adalah mitra penyedia solusi digital terintegrasi yang berfokus pada transformasi teknologi, dokumentasi kreatif, dan manajemen event modern. Kami hadir untuk membantu bisnis, organisasi, dan panitia acara dalam menghadirkan pengalaman digital yang mulus, estetis, dan berdampak tinggi.
+      </p>
+      <div class="mb-8 p-6 bg-surface-container-low rounded-xl border-l-4 border-primary-container">
+        <h3 class="font-headline-md text-xl font-bold text-on-surface mb-3">Visi Kami</h3>
+        <p class="font-body-md text-on-surface-variant">Menjadi perusahaan digital yang menghadirkan solusi teknologi, media kreatif, dan sistem informasi yang inovatif untuk mendukung perkembangan bisnis dan berbagai kegiatan masyarakat.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-surface-container-low">
+  <div class="max-w-7xl mx-auto">
+    <div data-animate="fade-in-up" class="opacity-0 text-center mb-12">
+      <h2 class="font-headline-lg text-3xl font-bold text-on-surface uppercase mb-4">Misi Kami</h2>
+      <p class="font-body-lg text-on-surface-variant max-w-3xl mx-auto">Komitmen kami dalam setiap pelayanan untuk kepuasan klien</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+      <div data-animate="fade-in-up" class="opacity-0 delay-200 bg-surface rounded-xl p-6 shadow-md border-l-4 border-primary-container hover:-translate-y-1 transition-transform">
+        <div class="bg-primary-container/10 text-primary p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4"><span class="material-symbols-outlined text-[24px]">workspace_premium</span></div>
+        <h3 class="font-bold text-lg text-on-surface mb-2">Layanan Terbaik</h3>
+        <p class="text-sm text-on-surface-variant">Memberikan layanan terbaik dengan kualitas profesional dengan standar rekayasa terdepan.</p>
+      </div>
+      <div data-animate="fade-in-up" class="opacity-0 delay-400 bg-surface rounded-xl p-6 shadow-md border-l-4 border-secondary-container hover:-translate-y-1 transition-transform">
+        <div class="bg-primary-container/10 text-primary p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4"><span class="material-symbols-outlined text-[24px]">developer_mode</span></div>
+        <h3 class="font-bold text-lg text-on-surface mb-2">Aplikasi & Sistem Modern</h3>
+        <p class="text-sm text-on-surface-variant">Mengembangkan perangkat lunak yang aman, berarsitektur tangguh, serta mudah digunakan.</p>
+      </div>
+      <div data-animate="fade-in-up" class="opacity-0 delay-600 bg-surface rounded-xl p-6 shadow-md border-l-4 border-tertiary-container hover:-translate-y-1 transition-transform">
+        <div class="bg-primary-container/10 text-primary p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4"><span class="material-symbols-outlined text-[24px]">photo_camera</span></div>
+        <h3 class="font-bold text-lg text-on-surface mb-2">Dokumentasi Kreatif</h3>
+        <p class="text-sm text-on-surface-variant">Menyediakan layanan foto dan videografi sinematik beresolusi tinggi untuk berbagai acara.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-surface">
+  <div class="max-w-7xl mx-auto">
+    <div data-animate="fade-in-up" class="opacity-0 text-center mb-12">
+      <h2 class="font-headline-lg text-3xl font-bold text-on-surface uppercase mb-4">Nilai Perusahaan</h2>
+      <p class="font-body-lg text-on-surface-variant max-w-3xl mx-auto">Prinsip dasar yang menjadi landasan operasional Haisen Official</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-gutter">
+      <div class="bg-surface-container-low rounded-2xl p-6 text-center hover:bg-primary hover:text-primary-container transition-all hover:-translate-y-2 group">
+        <div class="bg-primary-container text-primary p-4 rounded-full w-16 h-16 flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-[32px]">verified_user</span></div>
+        <h3 class="font-bold text-base mb-2">Integrity</h3>
+        <p class="text-xs opacity-75">Kejujuran & tanggung jawab.</p>
+      </div>
+      <div class="bg-surface-container-low rounded-2xl p-6 text-center hover:bg-primary hover:text-primary-container transition-all hover:-translate-y-2 group">
+        <div class="bg-primary-container text-primary p-4 rounded-full w-16 h-16 flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-[32px]">lightbulb</span></div>
+        <h3 class="font-bold text-base mb-2">Innovation</h3>
+        <p class="text-xs opacity-75">Solusi kreatif terkini.</p>
+      </div>
+      <div class="bg-surface-container-low rounded-2xl p-6 text-center hover:bg-primary hover:text-primary-container transition-all hover:-translate-y-2 group">
+        <div class="bg-primary-container text-primary p-4 rounded-full w-16 h-16 flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-[32px]">workspace_premium</span></div>
+        <h3 class="font-bold text-base mb-2">Quality</h3>
+        <p class="text-xs opacity-75">Standar mutu terbaik.</p>
+      </div>
+      <div class="bg-surface-container-low rounded-2xl p-6 text-center hover:bg-primary hover:text-primary-container transition-all hover:-translate-y-2 group">
+        <div class="bg-primary-container text-primary p-4 rounded-full w-16 h-16 flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-[32px]">favorite</span></div>
+        <h3 class="font-bold text-base mb-2">Satisfaction</h3>
+        <p class="text-xs opacity-75">Kepuasan klien prioritas.</p>
+      </div>
+      <div class="bg-surface-container-low rounded-2xl p-6 text-center hover:bg-primary hover:text-primary-container transition-all hover:-translate-y-2 group">
+        <div class="bg-primary-container text-primary p-4 rounded-full w-16 h-16 flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-[32px]">diversity_3</span></div>
+        <h3 class="font-bold text-base mb-2">Collaboration</h3>
+        <p class="text-xs opacity-75">Sinergi & komunikasi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
