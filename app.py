@@ -19,18 +19,18 @@ app.secret_key = os.getenv("FLASK_SECRET_KEY", "haisen_official_secret_2026")
 # ==========================================
 # KEAMANAN: HOST/DOMAIN WHITELISTING
 # ==========================================
-ALLOWED_HOSTS = [
-    '127.0.0.1:5000', 
-    'profile.haisen.my.id', 
-    'haisen.my.id', 
-    'profile-haisen-2026-faqms11ph-husain-mulyansyah.vercel.app',
-    'profile-haisen-2026-ftgtmuw3z-husain-mulyansyah.vercel.app' 
-]
+# ALLOWED_HOSTS = [
+#     '127.0.0.1:5000', 
+#     'profile.haisen.my.id',
+#     'haisen.my.id', 
+#     'profile-haisen-2026-faqms11ph-husain-mulyansyah.vercel.app',
+#     'profile-haisen-2026-ftgtmuw3z-husain-mulyansyah.vercel.app' 
+# ]
 
-@app.before_request
-def restrict_host():
-    if request.host not in ALLOWED_HOSTS:
-        abort(403) 
+# @app.before_request
+# def restrict_host():
+#     if request.host not in ALLOWED_HOSTS:
+#         abort(403) 
 
 # ==========================================
 # SISTEM DATABASE LOKAL (JSON)
