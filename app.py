@@ -29,6 +29,7 @@ supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 ALLOWED_HOSTS = [
     '127.0.0.1:5000', 
     'profile.haisen.my.id',
+    'www.haisen.my.id',
     'haisen.my.id', 
     'profile-haisen-2026-faqms11ph-husain-mulyansyah.vercel.app',
     'profile-haisen-2026-ftgtmuw3z-husain-mulyansyah.vercel.app' 
