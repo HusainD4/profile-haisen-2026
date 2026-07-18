@@ -5,22 +5,17 @@
 <div class="bg-surface-card rounded-2xl shadow-sm border border-outline overflow-hidden">
     <div class="p-6 border-b border-outline flex justify-between items-center bg-gray-50">
         <h3 class="font-bold text-lg">Daftar Proyek & Layanan</h3>
-        <div class="flex gap-2">
-            <input type="text" placeholder="Cari Invoice/Klien..." class="px-4 py-2 border border-outline rounded-lg text-sm focus:outline-none focus:border-primary" />
-            <button class="bg-primary text-primary-container px-4 py-2 rounded-lg text-sm font-bold shadow-sm">Cari</button>
-        </div>
     </div>
     
     <div class="overflow-x-auto">
         <table class="w-full text-left text-sm whitespace-nowrap">
             <thead class="uppercase tracking-wider border-b border-outline text-gray-500 font-bold bg-white">
                 <tr>
-                    <th scope="col" class="px-6 py-4">Nomor Invoice</th>
-                    <th scope="col" class="px-6 py-4">Nama Klien / Instansi</th>
-                    <th scope="col" class="px-6 py-4">Layanan Dipesan</th>
-                    <th scope="col" class="px-6 py-4">Tanggal Order</th>
-                    <th scope="col" class="px-6 py-4">Status Proyek</th>
-                    <th scope="col" class="px-6 py-4 text-center">Aksi</th>
+                    <th class="px-6 py-4">Nomor Invoice</th>
+                    <th class="px-6 py-4">Nama Klien</th>
+                    <th class="px-6 py-4">Layanan</th>
+                    <th class="px-6 py-4">Status Proyek</th>
+                    <th class="px-6 py-4 text-center">Aksi</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-outline">
@@ -29,18 +24,13 @@
                     <td class="px-6 py-4 font-mono font-bold">{{ p.id }}</td>
                     <td class="px-6 py-4 font-bold">{{ p.nama }}</td>
                     <td class="px-6 py-4">{{ p.layanan }}</td>
-                    <td class="px-6 py-4 text-gray-500">{{ p.tanggal }}</td>
                     <td class="px-6 py-4">
-                        {% if p.status == 'Selesai' %}
-                            <span class="px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-bold">{{ p.status }}</span>
-                        {% elif p.status == 'In Progress' %}
-                            <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-bold">{{ p.status }}</span>
-                        {% else %}
-                            <span class="px-3 py-1 rounded-full bg-orange-100 text-orange-700 text-xs font-bold">{{ p.status }}</span>
-                        {% endif %}
+                        <span class="px-3 py-1 rounded-full text-xs font-bold {% if p.status == 'Selesai' %}bg-green-100 text-green-700{% elif p.status == 'In Progress' %}bg-blue-100 text-blue-700{% else %}bg-orange-100 text-orange-700{% endif %}">
+                            {{ p.status }}
+                        </span>
                     </td>
                     <td class="px-6 py-4 text-center">
-                        <button class="text-blue-600 hover:bg-blue-50 p-2 rounded-lg transition-colors" title="Edit Pesanan"><span class="material-symbols-outlined text-[20px]">edit_square</span></button>
+                        <button onclick="bukaPopupPesanan('{{ p.id }}', '{{ p.status }}')" class="text-blue-600 hover:bg-blue-50 p-2 rounded-lg transition-colors"><span class="material-symbols-outlined text-[20px]">edit_square</span></button>
                     </td>
                 </tr>
                 {% endfor %}
@@ -48,4 +38,40 @@
         </table>
     </div>
 </div>
+
+<!-- Popup Edit Status -->
+<div id="popupPesanan" class="fixed inset-0 bg-black/50 hidden flex items-center justify-center z-50">
+    <div class="bg-white rounded-2xl p-8 w-full max-w-sm shadow-2xl">
+        <h3 class="text-xl font-bold mb-4">Edit Status Proyek</h3>
+        <form id="formStatus">
+            <input type="hidden" name="id" id="pesananId">
+            <select name="status_proyek" id="statusProyek" class="w-full p-3 border rounded-lg mb-4">
+                <option value="Menunggu Pembayaran">Menunggu Pembayaran</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Selesai">Selesai</option>
+                <option value="Dibatalkan">Dibatalkan</option>
+            </select>
+            <div class="flex justify-end gap-2">
+                <button type="button" onclick="tutupPopupPesanan()" class="px-4 py-2 text-gray-500">Batal</button>
+                <button type="submit" class="bg-primary text-white px-4 py-2 rounded-lg font-bold">Simpan</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function bukaPopupPesanan(id, status) {
+        document.getElementById('pesananId').value = id;
+        document.getElementById('statusProyek').value = status;
+        document.getElementById('popupPesanan').classList.remove('hidden');
+    }
+    function tutupPopupPesanan() { document.getElementById('popupPesanan').classList.add('hidden'); }
+
+    document.getElementById('formStatus').onsubmit = async (e) => {
+        e.preventDefault();
+        const data = Object.fromEntries(new FormData(e.target));
+        await fetch('/api/pesanan', { method: 'PUT', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(data) });
+        location.reload();
+    };
+</script>
 {% endblock %}

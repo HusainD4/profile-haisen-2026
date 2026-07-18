@@ -41,6 +41,12 @@
             <a href="{{ url_for('admin_transaksi') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl transition-colors {% if request.endpoint == 'admin_transaksi' %}bg-primary-container text-primary font-bold{% else %}hover:bg-white/10{% endif %}">
                 <span class="material-symbols-outlined">payments</span> Transaksi Midtrans
             </a>
+            <a href="{{ url_for('admin_produk') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl transition-colors {% if request.endpoint == 'admin_produk' %}bg-primary-container text-primary font-bold{% else %}hover:bg-white/10{% endif %}">
+                <span class="material-symbols-outlined">shopping_bag</span> Manajemen Produk
+            </a>
+            <a href="{{ url_for('admin_kategori') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl transition-colors {% if request.endpoint == 'admin_kategori' %}bg-primary-container text-primary font-bold{% else %}hover:bg-white/10{% endif %}">
+                <span class="material-symbols-outlined">category</span> Manajemen Kategori
+            </a>
         </nav>
         <div class="p-4 border-t border-white/10">
             <a href="{{ url_for('admin_logout') }}" class="flex items-center gap-3 px-4 py-3 text-red-400 hover:bg-white/10 rounded-xl transition-colors">

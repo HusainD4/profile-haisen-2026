@@ -1,0 +1,54 @@
+{% extends "admin/base_admin.html" %}
+{% block page_title %}Manajemen Kategori{% endblock %}
+
+{% block content %}
+<div class="bg-surface-card rounded-2xl shadow-sm border border-outline overflow-hidden">
+    <div class="p-6 border-b border-outline flex justify-between items-center bg-gray-50">
+        <h3 class="font-bold text-lg">Daftar Kategori</h3>
+        <button onclick="bukaPopup('kategori')" class="bg-primary text-primary-container px-4 py-2 rounded-lg text-sm font-bold shadow-sm">+ Tambah Kategori</button>
+    </div>
+    <div class="p-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {% for k in kategori %}
+            <div class="border rounded-xl p-4 flex justify-between items-center bg-white">
+                <span class="font-bold">{{ k.nama }}</span>
+                <button onclick="hapusKategori('{{ k.id }}')" class="text-red-500 hover:text-red-700">Hapus</button>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- Popup Tambah Kategori -->
+<div id="popupKategori" class="fixed inset-0 bg-black/50 hidden flex items-center justify-center z-50">
+    <div class="bg-white rounded-2xl p-8 w-full max-w-sm shadow-2xl">
+        <h3 class="text-xl font-bold mb-4">Tambah Kategori</h3>
+        <form id="formKategori">
+            <input type="text" name="nama" placeholder="Nama Kategori" class="w-full p-3 border rounded-lg mb-4" required>
+            <div class="flex justify-end gap-2">
+                <button type="button" onclick="tutupPopup('kategori')" class="px-4 py-2 text-gray-500">Batal</button>
+                <button type="submit" class="bg-primary text-white px-4 py-2 rounded-lg font-bold">Simpan</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function bukaPopup(id) { document.getElementById('popup' + id.charAt(0).toUpperCase() + id.slice(1)).classList.remove('hidden'); }
+    function tutupPopup(id) { document.getElementById('popup' + id.charAt(0).toUpperCase() + id.slice(1)).classList.add('hidden'); }
+
+    document.getElementById('formKategori').onsubmit = async (e) => {
+        e.preventDefault();
+        const data = Object.fromEntries(new FormData(e.target));
+        await fetch('/api/kategori', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(data) });
+        location.reload();
+    };
+
+    async function hapusKategori(id) {
+        if(confirm('Yakin ingin menghapus?')) {
+            await fetch('/api/kategori', { method: 'DELETE', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({id}) });
+            location.reload();
+        }
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,46 @@
+-- 1. Table Creation (Run this once)
+create table public.transaksi (
+  id text primary key,
+  nama text,
+  email text,
+  whatsapp text,
+  layanan text,
+  metode text,
+  jumlah bigint,
+  status_bayar text,
+  status_proyek text,
+  tanggal text
+);
+
+-- 2. CRUD Operations
+-- Fetch all records
+select * from public.transaksi;
+
+-- Insert a new transaction
+insert into public.transaksi (id, nama, email, whatsapp, layanan, metode, jumlah, status_bayar, status_proyek, tanggal)
+values ('ID_CONTOH', 'Nama Lengkap', 'email@contoh.com', '08123456789', 'Nama Layanan', 'METODE', 100000, 'pending', 'Menunggu Pembayaran', '19 Jul 2026 10:00');
+
+-- Update transaction status
+update public.transaksi
+set status_bayar = 'settlement', status_proyek = 'In Progress'
+where id = 'ID_CONTOH';
+
+-- 3. Queries for Admin Dashboard Stats (Used in app.py)
+-- Calculate total revenue (settlement/capture)
+select sum(jumlah) as total_pendapatan
+from public.transaksi
+where status_bayar in ('settlement', 'capture');
+
+-- Count total orders
+select count(*) as total_pesanan
+from public.transaksi;
+
+-- Count pending payments
+select count(*) as total_pending
+from public.transaksi
+where status_bayar = 'pending';
+
+-- Count active projects
+select count(*) as total_aktif
+from public.transaksi
+where status_proyek = 'In Progress';

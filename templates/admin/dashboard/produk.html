@@ -1,0 +1,101 @@
+{% extends "admin/base_admin.html" %}
+{% block page_title %}Manajemen Produk{% endblock %}
+
+{% block content %}
+<div class="bg-surface-card rounded-2xl shadow-sm border border-outline overflow-hidden">
+    <div class="p-6 border-b border-outline flex justify-between items-center bg-gray-50">
+        <h3 class="font-bold text-lg">Daftar Produk</h3>
+        <button onclick="bukaPopup('Produk', {})" class="bg-primary text-primary-container px-4 py-2 rounded-lg text-sm font-bold shadow-sm">+ Tambah Produk</button>
+    </div>
+    
+    <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm whitespace-nowrap">
+            <thead class="uppercase tracking-wider border-b border-outline text-gray-500 font-bold bg-white">
+                <tr>
+                    <th class="px-6 py-4">Nama Produk</th>
+                    <th class="px-6 py-4">Kategori</th>
+                    <th class="px-6 py-4 text-right">Harga</th>
+                    <th class="px-6 py-4">Deskripsi</th>
+                    <th class="px-6 py-4 text-center">Aksi</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-outline">
+                {% for p in produk %}
+                <tr>
+                    <td class="px-6 py-4 font-bold">{{ p.nama }}</td>
+                    <td class="px-6 py-4">{{ p.kategori.nama if p.kategori else '-' }}</td>
+                    <td class="px-6 py-4 text-right">Rp {{ "{:,}".format(p.harga).replace(',', '.') }}</td>
+                    <td class="px-6 py-4 max-w-xs truncate">{{ p.deskripsi }}</td>
+                    <td class="px-6 py-4 text-center">
+                        <button onclick="bukaPopup('Produk', {{ p | tojson | safe }})" class="text-blue-600 hover:bg-blue-50 p-2 rounded-lg transition-colors"><span class="material-symbols-outlined text-[20px]">edit_square</span></button>
+                        <button onclick="hapusProduk('{{ p.id }}')" class="text-red-600 hover:bg-red-50 p-2 rounded-lg transition-colors"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Popup Produk -->
+<div id="popupProduk" class="fixed inset-0 bg-black/50 hidden flex items-center justify-center z-50">
+    <div class="bg-white rounded-2xl p-8 w-full max-w-2xl shadow-2xl max-h-[90vh] overflow-y-auto">
+        <h3 id="popupTitle" class="text-xl font-bold mb-6">Tambah/Edit Produk</h3>
+        <form id="formProduk" class="space-y-4">
+            <input type="hidden" name="id" id="produkId">
+            <input type="text" name="nama" id="produkNama" placeholder="Nama Produk" class="w-full p-3 border rounded-lg" required>
+            <select name="kategori_id" id="produkKategori" class="w-full p-3 border rounded-lg" required>
+                <option value="">-- Pilih Kategori --</option>
+                {% for k in kategori %}<option value="{{ k.id }}">{{ k.nama }}</option>{% endfor %}
+            </select>
+            <input type="number" name="harga" id="produkHarga" placeholder="Harga" class="w-full p-3 border rounded-lg" required>
+            <textarea name="deskripsi" id="produkDeskripsi" placeholder="Deskripsi" class="w-full p-3 border rounded-lg" rows="3"></textarea>
+            
+            <div class="grid grid-cols-2 gap-4">
+                <textarea name="fitur" id="produkFitur" placeholder="Fitur (JSON)" class="w-full p-3 border rounded-lg" rows="4"></textarea>
+                <textarea name="alur" id="produkAlur" placeholder="Alur (JSON)" class="w-full p-3 border rounded-lg" rows="4"></textarea>
+            </div>
+            
+            <div class="flex justify-end gap-3 mt-6">
+                <button type="button" onclick="tutupPopup('Produk')" class="px-4 py-2 text-gray-500 font-bold">Batal</button>
+                <button type="submit" class="bg-primary text-white px-6 py-2 rounded-lg font-bold">Simpan</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function bukaPopup(id, data = {}) {
+        document.getElementById('popup' + id).classList.remove('hidden');
+        document.getElementById('popupTitle').innerText = data.id ? 'Edit Produk' : 'Tambah Produk';
+        document.getElementById('produkId').value = data.id || '';
+        document.getElementById('produkNama').value = data.nama || '';
+        document.getElementById('produkKategori').value = data.kategori_id || '';
+        document.getElementById('produkHarga').value = data.harga || '';
+        document.getElementById('produkDeskripsi').value = data.deskripsi || '';
+        document.getElementById('produkFitur').value = data.fitur ? JSON.stringify(data.fitur, null, 2) : '';
+        document.getElementById('produkAlur').value = data.alur ? JSON.stringify(data.alur, null, 2) : '';
+    }
+    function tutupPopup(id) { document.getElementById('popup' + id).classList.add('hidden'); }
+    
+    document.getElementById('formProduk').onsubmit = async (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const data = Object.fromEntries(formData.entries());
+        // Parse JSON fields
+        if(data.fitur) data.fitur = JSON.parse(data.fitur);
+        if(data.alur) data.alur = JSON.parse(data.alur);
+        
+        const method = data.id ? 'PUT' : 'POST';
+        await fetch('/api/produk', { method, headers: {'Content-Type': 'application/json'}, body: JSON.stringify(data) });
+        location.reload();
+    };
+
+    async function hapusProduk(id) {
+        if(confirm('Yakin hapus?')) {
+            await fetch('/api/produk', { method: 'DELETE', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({id}) });
+            location.reload();
+        }
+    }
+</script>
+{% endblock %}

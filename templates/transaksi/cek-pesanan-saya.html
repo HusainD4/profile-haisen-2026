@@ -41,11 +41,11 @@
         </div>
         
         <!-- STATUS BADGE DINAMIS -->
-        {% if pesanan.status in ['capture', 'settlement'] %}
+        {% if pesanan.status_bayar in ['settlement', 'capture'] %}
             <span class="bg-[#E8F5E9] text-[#2E7D32] border border-[#A5D6A7] px-4 py-2 rounded-full text-xs font-label-bold uppercase flex items-center gap-2 shadow-sm">
             <span class="material-symbols-outlined text-[16px]">verified</span> Pembayaran Lunas
             </span>
-        {% elif pesanan.status == 'pending' %}
+        {% elif pesanan.status_bayar == 'pending' %}
             <span class="bg-[#FFF8E1] text-[#F57F17] border border-[#FFE082] px-4 py-2 rounded-full text-xs font-label-bold uppercase flex items-center gap-2 shadow-sm">
             <span class="material-symbols-outlined text-[16px]">schedule</span> Menunggu Pembayaran
             </span>
@@ -65,38 +65,50 @@
           <p class="text-xs font-label-bold text-on-surface-variant uppercase mb-1">Metode Pembayaran</p>
           <p class="font-bold text-base text-on-surface flex items-center gap-2">
             <span class="material-symbols-outlined text-primary text-[18px]">account_balance_wallet</span> 
-            {{ pesanan.payment_method }}
+            {{ pesanan.metode }}
           </p>
+        </div>
+        <div>
+          <p class="text-xs font-label-bold text-on-surface-variant uppercase mb-1">Nama Klien</p>
+          <p class="font-bold text-base text-on-surface">{{ pesanan.nama }}</p>
+        </div>
+        <div>
+          <p class="text-xs font-label-bold text-on-surface-variant uppercase mb-1">Kontak (WA/Email)</p>
+          <p class="font-bold text-base text-on-surface">{{ pesanan.whatsapp }} / {{ pesanan.email }}</p>
+        </div>
+        <div class="md:col-span-2">
+          <p class="text-xs font-label-bold text-on-surface-variant uppercase mb-1">Layanan Dipesan</p>
+          <p class="font-bold text-base text-on-surface">{{ pesanan.layanan }}</p>
         </div>
       </div>
 
-      <!-- PROGRESS BAR DINAMIS BERDASARKAN STATUS PEMBAYARAN -->
+      <!-- PROGRESS BAR DINAMIS BERDASARKAN STATUS PROYEK -->
       <div class="space-y-2 mb-8 bg-surface p-6 rounded-xl border border-outline">
         <div class="flex justify-between text-xs font-label-bold">
-            <span class="text-on-surface">Kemajuan Proyek (Progress)</span>
-            {% if pesanan.status in ['capture', 'settlement'] %}
-                <span class="text-primary">50%</span>
-            {% elif pesanan.status == 'pending' %}
-                <span class="text-[#F57F17]">10%</span>
+            <span class="text-on-surface">Kemajuan Proyek ({{ pesanan.status_proyek }})</span>
+            {% if pesanan.status_proyek == 'Selesai' %}
+                <span class="text-primary">100%</span>
+            {% elif pesanan.status_proyek == 'In Progress' %}
+                <span class="text-[#2E7D32]">50%</span>
             {% else %}
-                <span class="text-[#C62828]">0%</span>
+                <span class="text-[#F57F17]">10%</span>
             {% endif %}
         </div>
         
         <div class="w-full bg-background h-3 rounded-full overflow-hidden border border-outline">
-            {% if pesanan.status in ['capture', 'settlement'] %}
-                <div class="bg-primary h-full rounded-full transition-all duration-1000" style="width: 50%;"></div>
-            {% elif pesanan.status == 'pending' %}
-                <div class="bg-secondary-container h-full rounded-full transition-all duration-1000" style="width: 10%;"></div>
+            {% if pesanan.status_proyek == 'Selesai' %}
+                <div class="bg-primary h-full rounded-full transition-all duration-1000" style="width: 100%;"></div>
+            {% elif pesanan.status_proyek == 'In Progress' %}
+                <div class="bg-[#2E7D32] h-full rounded-full transition-all duration-1000" style="width: 50%;"></div>
             {% else %}
-                <div class="bg-error h-full rounded-full transition-all duration-1000" style="width: 0%;"></div>
+                <div class="bg-[#F57F17] h-full rounded-full transition-all duration-1000" style="width: 10%;"></div>
             {% endif %}
         </div>
         
         <div class="flex justify-between text-[11px] text-on-surface-variant pt-2">
-            <span class="{% if pesanan.status != 'pending' %}font-bold text-on-surface{% endif %}">1. Verifikasi Pembayaran</span>
-            <span class="{% if pesanan.status in ['capture', 'settlement'] %}font-bold text-primary{% endif %}">2. Proses Pengerjaan</span>
-            <span>3. Penyerahan Final</span>
+            <span class="{% if pesanan.status_proyek != 'Menunggu Pembayaran' %}font-bold text-on-surface{% endif %}">1. Verifikasi Pembayaran</span>
+            <span class="{% if pesanan.status_proyek in ['In Progress', 'Selesai'] %}font-bold text-primary{% endif %}">2. Proses Pengerjaan</span>
+            <span class="{% if pesanan.status_proyek == 'Selesai' %}font-bold text-primary{% endif %}">3. Penyerahan Final</span>
         </div>
       </div>
 
