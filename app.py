@@ -526,7 +526,7 @@ def privacy_policy(): return render_template("informasi/privacy_policy.html")
 def terms_and_conditions(): return render_template("informasi/terms_and_conditions.html")
 
 @app.route("/produk")
-def produk(): return render_template("public/produk.html")
+def produk(): return render_template("produk/produk.html")
 
 
 @app.route("/debug-templates")
@@ -544,14 +544,14 @@ def debug_templates():
     else:
         return jsonify({"status": "Error", "message": "Folder templates tidak ditemukan di server!"})
     
-    
+
 @app.route("/detail-produk")
 def detail_produk():
     produk_id = request.args.get("id", "rfid-timing")
     if produk_id not in KATALOG_PRODUK_DETAIL:
         produk_id = "rfid-timing"
     produk_data = KATALOG_PRODUK_DETAIL.get(produk_id, {})
-    return render_template("public/detail_produk.html", produk_id=produk_id, produk=produk_data)
+    return render_template("produk/detail_produk.html", produk_id=produk_id, produk=produk_data)
 
 @app.route("/cek-pesanan")
 def cek_pesanan():
