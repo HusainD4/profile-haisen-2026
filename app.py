@@ -149,10 +149,6 @@ def admin_logout():
     return redirect(url_for('admin_login'))
 
 # ==========================================
-# RUTE ADMIN DASHBOARD
-# ==========================================
-@app.route("/admin")
-# ==========================================
 # HELPER SINKRONISASI
 # ==========================================
 def sync_transaction_status(transaction):
