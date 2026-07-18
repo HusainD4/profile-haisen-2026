@@ -23,9 +23,9 @@ ALLOWED_HOSTS = [
     '127.0.0.1:5000', 
     'profile.haisen.my.id', 
     'haisen.my.id', 
-    'profile-haisen-2026-faqms11ph-husain-mulyansyah.vercel.app'
+    'profile-haisen-2026-faqms11ph-husain-mulyansyah.vercel.app',
+    'profile-haisen-2026-ftgtmuw3z-husain-mulyansyah.vercel.app' 
 ]
-
 
 @app.before_request
 def restrict_host():
