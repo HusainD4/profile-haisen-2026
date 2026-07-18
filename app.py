@@ -526,7 +526,7 @@ def privacy_policy(): return render_template("informasi/privacy_policy.html")
 def terms_and_conditions(): return render_template("informasi/terms_and_conditions.html")
 
 @app.route("/produk")
-def produk(): return render_template("public/produk.html")
+def produk(): return render_template("templates/public/produk.html")
 
 @app.route("/detail-produk")
 def detail_produk():
