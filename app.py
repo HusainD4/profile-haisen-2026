@@ -526,8 +526,25 @@ def privacy_policy(): return render_template("informasi/privacy_policy.html")
 def terms_and_conditions(): return render_template("informasi/terms_and_conditions.html")
 
 @app.route("/produk")
-def produk(): return render_template("templates/public/produk.html")
+def produk(): return render_template("public/produk.html")
 
+
+@app.route("/debug-templates")
+def debug_templates():
+    import os
+    # Mendapatkan path absolut folder templates
+    template_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
+    
+    files_list = []
+    if os.path.exists(template_dir):
+        for root, dirs, files in os.walk(template_dir):
+            for file in files:
+                files_list.append(os.path.join(root, file))
+        return jsonify({"status": "OK", "found_files": files_list})
+    else:
+        return jsonify({"status": "Error", "message": "Folder templates tidak ditemukan di server!"})
+    
+    
 @app.route("/detail-produk")
 def detail_produk():
     produk_id = request.args.get("id", "rfid-timing")
